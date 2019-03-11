@@ -8,8 +8,7 @@ h1{
 
 .datos_alumno{
 
-  margin-top: 5%;
-  margin-left: 6%;
+ 
   width: 400px;
   height: 560px;
   background-color: white;
@@ -70,4 +69,6 @@ body {
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
+ 
 }
+
