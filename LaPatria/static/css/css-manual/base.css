@@ -5,11 +5,22 @@
 h1{
 	color: white;
 }
- /*!
- * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
- * Copyright 2013-2019 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
- */
+
+.datos_alumno{
+
+  margin-top: 5%;
+  margin-left: 6%;
+  width: 500px;
+  height: 380px;
+  background-color: white;
+  color: black;
+  text-align: left;
+  border-style: outset;
+  overflow: auto;
+
+}
+
+ 
 body {
   overflow-x: hidden;
 }
@@ -53,6 +64,15 @@ body {
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
+  .datos_alumno{
+    width: 100%;
+  }
+}
+@media screen and (min-width: 400px) {
+  .datos_alumno {width: 25%; }
 }
 
+@media screen and (min-width: 600px) {
+  .datos_alumno {width: 50%; }
+}
 
