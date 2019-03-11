@@ -8,4 +8,5 @@ def primaria(request):
  	return render(request,"primaria/base.html")
 def informacion(request):
 	return render(request,"primaria/informacion.html")
-# Create your views here.
+def horarios(request):
+	return render(request,"primaria/horarios.html")
