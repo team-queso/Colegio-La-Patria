@@ -17,8 +17,9 @@ h1{
   text-align: left;
   border-style: outset;
   overflow: auto;
- 
-  float: right;
+  position: relative;
+  
+
 
 }
 .foto{
@@ -69,15 +70,4 @@ body {
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
-  .datos_alumno{
-    width: 100%;
-  }
 }
-@media screen and (min-width: 400px) {
-  .datos_alumno {width: 25%; }
-}
-
-@media screen and (min-width: 600px) {
-  .datos_alumno {width: 50%; }
-}
-
