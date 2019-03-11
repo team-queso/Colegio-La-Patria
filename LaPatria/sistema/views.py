@@ -12,3 +12,5 @@ def horarios(request):
 	return render(request,"primaria/horarios.html")
 def calificaciones(request):
 	return render(request,"primaria/calificaciones.html")
+def reportes(request):
+	return render(request,"primaria/reportes.html")
