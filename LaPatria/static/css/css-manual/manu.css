@@ -1,0 +1,59 @@
+.aves { 
+	margin-left: 35% 
+}
+
+.div-left { 
+	position: relative; 
+	right: 5%;
+}
+
+.div-right { 
+	position: relative; 
+	left: 5%
+}
+
+.div-center { 
+	position: relative;
+}
+
+.div-container {
+	position: relative; 
+	top: 200px
+}
+
+.div-enca {
+	margin-bottom: : 3%;
+	background-color: #082352; 
+	box-shadow: 0px 20px #0a8916;
+	position: relative;
+
+}
+
+.div-ima1 {
+	height: 80px;
+	position: fixed;
+	left: 3%;  
+}
+
+.div-ima2{
+	font-family: 'Martel', serif;
+	font-weight: black900;
+	font-size: 50px;
+	color: #FFFFFF;
+	height: 80px;
+	position: relative;
+	left: 27%;
+	text-shadow: 1px 1px 1px #aaa;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.div-ima3 {
+	height: 80px;
+	position: relative;
+	left: 43%;  
+}
+.let-div{
+	justify-content: center;
+	align-items: center;
+}
