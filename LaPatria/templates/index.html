@@ -1,24 +1,78 @@
 {% load staticfiles %}
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <head>
+      <!-- Required meta tags -->
+         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.3 ">
+        <link href="{%static 'css/bootstrap.css'%}" rel="stylesheet">
+        <link href="{%static 'css-manu/manu.css'%}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Martel:400,900" rel="stylesheet">
 
-   
-    <title></title>
-  </head>
-  <body>
- <img src="{% static 'login.jpg' %}">
- 
 
-   <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <p class="card-text">Alumadsadadadadanosaaaaaaaaaaaaaaa</p>
-  </div>
-</div>pinche puto joto
+      <!-- Bootstrap CSS -->
+      
+      <title></title>
+    </head>
+    <body>
 
- 
-  </body>
+      <div class="div-enca">
+        <div class="row">
+          <div class="col div-ima1">
+            <img src="{% static 'logo-sep.png' %}" height="80px">  
+          </div>
+          <div class="col div-ima2">
+           COLEGIO "LA PATRIA "
+          </div>
+          <div class="col div-ima3">
+            <img src="{% static 'logo-cole.png' %}" height="80px"> 
+          </div>
+        </div>
+      </div>
+
+      <div class="container div-container div-con-move">
+
+        <div class="row">
+
+          <div class="col div-left border border-dark rounded shadow p-3 mb-5 bg-white rounded" >
+            <div class="card" style="float: right;">
+              <img src="{% static 'profe.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" align="center">PROFESORES</h5>
+                <p style="color: white;"> .</p>
+                <a href="#" class="btn btn-primary aves">Inicio </a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col div-center shadow p-3 mb-5 bg-white rounded border border-dark rounded">
+            <div class="card" >
+              <img src="{% static 'estu.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" align="center">ALUMNO</h5>
+                <p style="color: white;"> .</p>
+                <a href="#" class="btn btn-primary aves">Inicio </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col div-right shadow p-3 mb-5 bg-white rounded border border-dark rounded">
+            <div class="card">
+              <img src="{% static 'admin.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" align="center">ADMINISTRACIÓN</h5>
+                <p style="color: white;"> .</p>
+                <a href="#" class="btn btn-primary aves">Inicio </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      
+    </body>
 </html>
