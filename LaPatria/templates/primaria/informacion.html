@@ -1,8 +1,12 @@
-{% extends 'base.html' %}
 
+{% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
 
-
+<div class="media">
+        <img class="mr-3" src="{% static 'estu.png' %}">
+       
+</div>
     <div class="datos_alumno">
 
             <table class="table table-hover">
@@ -31,6 +35,7 @@
 
 
     </div>  
+
 
 
 
