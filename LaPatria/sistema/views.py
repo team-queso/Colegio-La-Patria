@@ -14,3 +14,5 @@ def calificaciones(request):
 	return render(request,"primaria/calificaciones.html")
 def reportes(request):
 	return render(request,"primaria/reportes.html")
+def profe(request):
+	return render(request,"profe/basepro.html")
