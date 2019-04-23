@@ -28,6 +28,21 @@
     <div class="bg-light border-right" id="sidebar-wrapper" >
       <div class="sidebar-heading"> Colegio La Patria </div>
       <div class="list-group list-group-flush">
+      <ul class="list-group list-group-flush">
+          <li><a href="{% url 'informacion' %} " class="list-group-item list-group-item-action bg-light">Información</a></li>
+          <li><a href="{% url 'horarios' %}" class="list-group-item list-group-item-action bg-light">Horario</a></li>
+          <li><a href="#" class="list-group-item list-group-item-action bg-light">Calificaciones</a>
+              <ul>
+                <li>Geografia I</li>
+                <li>Geografia II</li>
+                <li>Geografia III</li>
+              </ul>
+          </li>
+          <li><a href="#" class="list-group-item list-group-item-action bg-light">Cerrar sesión</a></li>
+
+
+
+      </ul>
         <a href="{% url 'informacion' %} " class="list-group-item list-group-item-action bg-light">Información</a>
         <a href="{% url 'horarios' %}" class="list-group-item list-group-item-action bg-light">Horario</a>
         <a href="{% url 'calificaciones' %}" class="list-group-item list-group-item-action bg-light">Calificaciones</a>
