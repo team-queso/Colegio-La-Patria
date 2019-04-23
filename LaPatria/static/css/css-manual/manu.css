@@ -61,3 +61,10 @@
         top: 50px;
         position: relative;
 }
+.derecha {
+	float: left;
+	margin-left: 10px;
+}
+.uxa{
+	display: none;
+}
