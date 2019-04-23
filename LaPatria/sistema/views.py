@@ -14,13 +14,3 @@ def calificaciones(request):
 	return render(request,"primaria/calificaciones.html")
 def reportes(request):
 	return render(request,"primaria/reportes.html")
-def secundaria(request):
- 	return render(request,"secundaria/basesecundaria.html")
-def informacion_secundaria(request):
-	return render(request,"secundaria/informacion_secundaria.html")
-def horarios_secundaria(request):
-	return render(request,"secundaria/horarios_secundaria.html")
-def calificaciones_secundaria(request):
-	return render(request,"secundaria/calificaciones_secundaria.html")
-def reportes_secundaria(request):
-	return render(request,"secundaria/reportes_secundaria.html")
