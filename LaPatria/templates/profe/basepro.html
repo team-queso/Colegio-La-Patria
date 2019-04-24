@@ -8,8 +8,7 @@
 <link href="{%static 'css/bootstrap.css'%}" rel="stylesheet">
 <link href="{%static 'css-manual/base.css'%}" rel="stylesheet">
 <link href="{%static 'css-manual/manu.css'%}" rel="stylesheet">
-<link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -33,8 +32,8 @@
       <ul class="list-group list-group-flush">
           <li><a href="{% url 'informacion' %} " class="list-group-item list-group-item-action bg-light">Información</a></li>
           <li><a href="{% url 'horarios' %}" class="list-group-item list-group-item-action bg-light">Horario</a></li>
-          <li><a href="#" class="list-group-item list-group-item-action bg-light">Calificaciones</a>
-              <ul>
+          <li><a href="#" class="list-group-item list-group-item-action bg-light">Calificaciones  <i class="fa-chevron-down"></i></a>
+              <ul class="list-group list-group-flush">
                 <li>Geografia I</li>
                 <li>Geografia II</li>
                 <li>Geografia III</li>
@@ -47,7 +46,7 @@
       </ul>
         <a href="{% url 'informacion' %} " class="list-group-item list-group-item-action bg-light">Información</a>
         <a href="{% url 'horarios' %}" class="list-group-item list-group-item-action bg-light">Horario</a>
-        <a href="{% url 'calificaciones' %}" class="list-group-item list-group-item-action bg-light icon-chevron-down">Calificaciones</a>
+        <a href="{% url 'calificaciones' %}" class="icon-chevron-downn">Calificaciones</a>
         <a href="{% url 'reportes' %}" class="list-group-item list-group-item-action bg-light">Reportes</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Cerrar sesión</a>
         
