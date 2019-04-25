@@ -18,7 +18,7 @@ class Grupos(models.Model):
     
 
     def __str__(self):
-        return '{}' .format(self.grupo,self.ciclo)
+        return '{}' .format(self.grupo)
     
 
 class Reticula(models.Model):
