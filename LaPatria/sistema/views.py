@@ -4,8 +4,7 @@ from django.http import HttpResponse
 from sistema.forms import ingresarAlumno,ingresarMateria,asignarMateria
 
 
-def index(request):
-    return render(request,"index.html")
+
 def primaria(request):
  	return render(request,"primaria/base.html")
 def informacion(request):

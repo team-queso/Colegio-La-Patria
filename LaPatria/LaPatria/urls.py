@@ -20,9 +20,9 @@ from django.contrib.auth.views import LoginView
 
 urlpatterns = [
 
-	path('', include('sistema.urls')),
+	path('colegiolapatria/', include('sistema.urls')),
+    path('',include('registros.urls')),
     path('admin/', admin.site.urls),
-    path('login/', LoginView.as_view()),
 
 
 

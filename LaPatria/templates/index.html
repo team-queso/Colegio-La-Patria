@@ -1,5 +1,6 @@
-{% load staticfiles %}
+
 <!doctype html>
+{% load staticfiles %}
 <html lang="en">
     <head>
       <!-- Required meta tags -->
@@ -40,7 +41,7 @@
               <div class="card-body">
                 <h5 class="card-title" align="center">PROFESORES</h5>
                 <p style="color: white;"> .</p>
-                <a href="#" class="btn btn-primary aves">Inicio </a>
+                <a href="#" class="btn btn-primary aves">Iniciar sesión </a>
               </div>
             </div>
           </div>
@@ -63,7 +64,7 @@
               <div class="card-body">
                 <h5 class="card-title" align="center">ADMINISTRACIÓN</h5>
                 <p style="color: white;"> .</p>
-                <a href="#" class="btn btn-primary aves">Inicio </a>
+                <a href="{% url 'login_administrador' %}" class="btn btn-primary aves">Iniciar sesion </a>
               </div>
             </div>
           </div>

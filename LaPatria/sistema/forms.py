@@ -29,7 +29,6 @@ class ingresarAlumno(forms.ModelForm):
             'nombre': forms.TextInput(attrs={"class":'form-control'}),
             'telefono': forms.TextInput(attrs={'class':'form-control'}),
             'domicilio': forms.TextInput(attrs={'class':'form-control'}),
-            'telefono': forms.TextInput(attrs={'class':'form-control'}),
             'pin': forms.TextInput(attrs={'class':'form-control'}),
         
 
