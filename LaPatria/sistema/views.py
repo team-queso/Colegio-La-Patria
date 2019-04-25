@@ -16,3 +16,9 @@ def reportes(request):
 	return render(request,"primaria/reportes.html")
 def profe(request):
 	return render(request,"profe/basepro.html")
+def panel_administrador(request):
+	return render(request,"panel_admin/baseadmin.html")
+def panel_administrador_ingresar_alumno(request):
+	return render(request,"panel_admin/ingresar_alumno.html")
+def panel_administrador_ingresar_materia(request):
+	return render(request,"panel_admin/ingresar_materia.html")
