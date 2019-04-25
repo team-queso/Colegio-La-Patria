@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from sistema.forms import ingresarAlumno,ingresarMateria
+from sistema.forms import ingresarAlumno,ingresarMateria,asignarMateria
 
 
 def index(request):
@@ -39,3 +39,12 @@ def panel_administrador_ingresar_materia(request):
 		formularioMateria = ingresarMateria()
 
 		return render(request,"panel_admin/ingresar_materia.html", {'formularioMateria': formularioMateria })
+def panel_administrador_asignar_grupos(request):
+	if request.method == 'POST':
+		formularioAsignarMateria = asignarMateria(request.POST)
+		if formularioAsignarMateria.is_valid():
+			formularioAsignarMateria.save()
+	else:
+		formularioAsignarMateria = asignarMateria()
+
+		return render(request,"panel_admin/asignar_grupos.html", {'formularioAsignarMateria': formularioAsignarMateria })

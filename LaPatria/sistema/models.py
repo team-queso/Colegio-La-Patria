@@ -6,19 +6,37 @@ class administrador(models.Model):
     password = models.CharField(max_length=15)
     def __str__(self):
             return self.usuario
+class Materia (models.Model):
+    materia = models.CharField(max_length=45)
+    claveMateria = models.CharField(max_length=6, null= True)
+
+    def __str__(self):
+        return '{}' .format(self.materia)
 class Grupos(models.Model):
     grupo = models.CharField(max_length=2)
     ciclo = models.CharField(max_length=9, null=True)
+    
 
     def __str__(self):
-        return '{}' .format(self.grupo)
+        return '{}' .format(self.grupo,self.ciclo)
+    
+
+class Reticula(models.Model):
+    anio_reticula = models.CharField(max_length=4)
+    materiaAsignada = models.ForeignKey(Materia, null = True, blank = True, on_delete=models.CASCADE)
+    grupoAsignado = models.ForeignKey(Grupos,related_name='grupo_Grupos', null = True, blank = True, on_delete=models.CASCADE)
+    cicloEscolar = models.ForeignKey(Grupos,related_name='ciclo_Grupos',null = True, blank = True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{} {}' .format(self.grupoAsignado, self.materiaAsignada)
+
+
 class Alumno(models.Model):
     no_control = models.AutoField(primary_key=True)
     pin = models.IntegerField()
     nombre = models.CharField(max_length=100)
     telefono = models.IntegerField()
     domicilio = models.CharField(max_length=150)
-    grupoAsignado = models.ForeignKey(Grupos, null = True, blank = True, on_delete=models.CASCADE)
     def __str__(self):
         return self.nombre   
 
@@ -29,11 +47,10 @@ class Docente (models.Model):
     domicilio = models.CharField(max_length=50)
     registro = models.CharField(max_length=15)
     pin = models.IntegerField()
-class Materia (models.Model):
-    materia = models.CharField(max_length=45)
-    claveMateria = models.CharField(max_length=6, null= True)
+
 
     def __str__(self):
-        return self.materia
+        return self.nombreDocente
+
 
 

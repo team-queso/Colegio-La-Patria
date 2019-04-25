@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Alumno,Materia
+from .models import Alumno,Materia,Reticula
 
 
 class ingresarAlumno(forms.ModelForm):
@@ -13,7 +13,7 @@ class ingresarAlumno(forms.ModelForm):
             'telefono',
             'domicilio',
             'pin',
-            'grupoAsignado'
+            
         ]
 
         labels ={
@@ -21,7 +21,7 @@ class ingresarAlumno(forms.ModelForm):
             'telefono':'Telefono',
             'domicilio': 'Domicilio',
             'pin':'PIN',
-            'grupoAsignado': 'Grupo'
+        
 
         }
 
@@ -31,7 +31,7 @@ class ingresarAlumno(forms.ModelForm):
             'domicilio': forms.TextInput(attrs={'class':'form-control'}),
             'telefono': forms.TextInput(attrs={'class':'form-control'}),
             'pin': forms.TextInput(attrs={'class':'form-control'}),
-            'grupo': forms.Select(attrs={'class':'form-control'}),
+        
 
                  }
 class ingresarMateria(forms.ModelForm):
@@ -55,5 +55,33 @@ class ingresarMateria(forms.ModelForm):
             'materia': forms.TextInput(attrs={"class":'form-control'}),
             'claveMateria': forms.TextInput(attrs={'class':'form-control'}),
             
+
+                 }
+class asignarMateria(forms.ModelForm):
+    class Meta:
+        model = Reticula
+
+        fields = [
+            'anio_reticula',
+            'materiaAsignada',
+            'grupoAsignado',
+            'cicloEscolar',
+            
+        ]
+
+        labels ={
+            'anio_reticula':'Año',
+            'grupoAsignado':'Grupo',
+            'materiaAsignada': 'Materias',
+            'cicloEscolar': 'Periodo escolar',
+            
+
+        }
+
+        widgets = {
+            'anio_reticula': forms.TextInput(attrs={'class':'form-control'}),
+            'materiaAsignada': forms.Select(attrs={'class':'form-control'}),
+            'grupoAsignado': forms.Select(attrs={"class":'form-control'}),
+            'cicloEscolar': forms.Select(attrs={"class":'form-control'}),
 
                  }
