@@ -2,27 +2,13 @@
 
 {% block content %}
 
-<form>
-    <div class="form-group">
-      <label for="Nombre">Nombre y Apellidos del Alumno</label>
-      <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Ingrese nombre y apellidos">
-    </div>
-    <div class="form-group">
-      <label for="Telefono">Telefono</label>
-      <input type="text" class="form-control" id="" placeholder="Telefono">
-    </div>
-    <div class="form-group">
-        <label for="domicilio">Domicilio</label>
-        <input type="text" class="form-control" id="" placeholder="Ingrese el domicilio">
-    </div>
-    <div class="form-group">
-        <label for="grado">Grado</label>
-        <input type="number" class="form-control" id="" placeholder="Ingrese el grado">
-    </div>
-    <div class="form-group">
-        <label for="grupo">Grupo</label>
-        <input type="text" class="form-control" id="" placeholder="Ingrese Grupo">
-    </div>
+<form method="POST"> 
+
+
+    {% csrf_token %}
+    {{ formularioAlumno.as_p}}
+  
+    <button type="submit" class="btn btn-primary">Guardar</button>
     
   </form>
 
