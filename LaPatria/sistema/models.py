@@ -22,13 +22,13 @@ class Grupos(models.Model):
     
 
 class Reticula(models.Model):
-    anio_reticula = models.CharField(max_length=4)
+    periodo = models.CharField(null = True, blank = True, max_length=12)
     materiaAsignada = models.ForeignKey(Materia, null = True, blank = True, on_delete=models.CASCADE)
-    grupoAsignado = models.ForeignKey(Grupos,related_name='grupo_Grupos', null = True, blank = True, on_delete=models.CASCADE)
-    cicloEscolar = models.ForeignKey(Grupos,related_name='ciclo_Grupos',null = True, blank = True, on_delete=models.CASCADE)
+    grupoAsignado = models.ForeignKey(Grupos, null = True, blank = True, on_delete=models.CASCADE)
+    
 
     def __str__(self):
-        return '{} {}' .format(self.grupoAsignado, self.materiaAsignada)
+        return '{} ' .format(self.grupoAsignado)
 
 
 class Alumno(models.Model):
@@ -37,8 +37,12 @@ class Alumno(models.Model):
     nombre = models.CharField(max_length=100)
     telefono = models.IntegerField()
     domicilio = models.CharField(max_length=150)
+    reticula = models.ForeignKey(Reticula, null = True, blank = True, on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.nombre   
+
+
 
 class Docente (models.Model):
     nombreDocente = models.CharField(max_length=100)
@@ -51,6 +55,7 @@ class Docente (models.Model):
 
     def __str__(self):
         return self.nombreDocente
+
 
 
 

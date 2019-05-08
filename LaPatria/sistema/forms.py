@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Alumno,Materia,Reticula
+from .models import Alumno,Materia,Reticula,Docente
 
 
 class ingresarAlumno(forms.ModelForm):
@@ -13,6 +13,7 @@ class ingresarAlumno(forms.ModelForm):
             'telefono',
             'domicilio',
             'pin',
+            'reticula',
             
         ]
 
@@ -21,6 +22,7 @@ class ingresarAlumno(forms.ModelForm):
             'telefono':'Telefono',
             'domicilio': 'Domicilio',
             'pin':'PIN',
+            'reticula':'Grupo'
         
 
         }
@@ -30,6 +32,7 @@ class ingresarAlumno(forms.ModelForm):
             'telefono': forms.TextInput(attrs={'class':'form-control'}),
             'domicilio': forms.TextInput(attrs={'class':'form-control'}),
             'pin': forms.TextInput(attrs={'class':'form-control'}),
+            'reticula': forms.Select(attrs={"class":'form-control'}),
         
 
                  }
@@ -57,30 +60,63 @@ class ingresarMateria(forms.ModelForm):
 
                  }
 class asignarMateria(forms.ModelForm):
+
     class Meta:
         model = Reticula
 
         fields = [
-            'anio_reticula',
+            'periodo',
             'materiaAsignada',
             'grupoAsignado',
-            'cicloEscolar',
+          
             
         ]
 
         labels ={
-            'anio_reticula':'Año',
-            'grupoAsignado':'Grupo',
+            'periodo':'Periodo',
             'materiaAsignada': 'Materias',
-            'cicloEscolar': 'Periodo escolar',
+            'grupoAsignado':'Grupo',
+            
+            
             
 
         }
 
         widgets = {
-            'anio_reticula': forms.TextInput(attrs={'class':'form-control'}),
+            'periodo': forms.TextInput(attrs={'class':'form-control'}),
             'materiaAsignada': forms.Select(attrs={'class':'form-control'}),
             'grupoAsignado': forms.Select(attrs={"class":'form-control'}),
-            'cicloEscolar': forms.Select(attrs={"class":'form-control'}),
-
+            
                  }
+class ingresarDocente(forms.ModelForm):
+    class Meta:
+        model = Docente
+        
+        fields = [
+        'nombreDocente',
+        'correo',
+        'telefono',
+        'domicilio',
+        'registro',
+        'pin',
+            
+        ]
+    
+        labels ={
+
+        'nombreDocente':'Nombre Docente',
+        'correo':'Correo',
+        'telefono':'Telefono',
+        'domicilio': 'Domicilio',
+        'registro':'Cedula',
+        'pin':'PIN',
+        }
+    
+        widgets = {
+        'nombreDocente': forms.TextInput(attrs={"class":'form-control'}),
+        'correo': forms.TextInput(attrs={'class':'form-control'}),
+        'telefono': forms.TextInput(attrs={'class':'form-control'}),
+        'domicilio': forms.TextInput(attrs={'class':'form-control'}),
+        'registro': forms.TextInput(attrs={'class':'form-control'}),
+        'pin': forms.TextInput(attrs={'class':'form-control'}),
+            }
