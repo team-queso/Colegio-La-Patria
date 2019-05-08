@@ -56,19 +56,8 @@ def panel_administrador_asignar_grupos(request):
 		formularioAsignarMateria = asignarMateria()
 
 		return render(request,"panel_admin/asignar_grupos.html", {'formularioAsignarMateria': formularioAsignarMateria })
-
-<<<<<<< HEAD
-def panel_administrador_edit(request, no_control):
-	alumno = Alumno.Objects.get(id = no_control)
-	if request.method == 'GET':
-		formularioAlumno=ingresarAlumno(instance = reticula)
-	else:
-		formularioAlumno=ingresarAlumno(request.POST, instance=reticula)
-		if formularioAlumno.is_valid():
-			formularioAlumno.save()
 			
 	
-=======
 def listarAlumno(request):
 	alumno = Alumno.objects.all()
 	contexto = {"alumnos" : alumno}
@@ -81,12 +70,9 @@ def panel_administrador_editar(request,no_control):
 	else:
 		formularioAlumno=ingresarAlumno(request.POST, instance=alumno)
 		if formularioAlumno.is_valid():
-			formularioAlumno.save()
-<<<<<<< HEAD
+			formularioAlumno.save()	
 			return redirect(listarAlumno)
 	return render(request,'panel_admin/reinscripcion.html',{'formularioAlumno':formularioAlumno})
-=======
 			
->>>>>>> a4b67c1475cb7c8c14f191d04f2a74e94f2e617b
-		return render(request,'panel_admin/reinscripción.html'),{'formularioAlumno':formularioAlumno}
->>>>>>> d48974701ad60169c246ec12bd4d6292d4fc11b0
+
+	
