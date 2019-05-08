@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=0.2 ">
         <link href="{%static 'css/bootstrap.css'%}" rel="stylesheet">
         <link href="{%static 'css-manual/manu.css'%}" rel="stylesheet">
+        <link href="{%static 'css-manual/estilo.css'%}" rel="stylesheet">                          
         <link href="https://fonts.googleapis.com/css?family=Martel:400,900" rel="stylesheet">
 
 
@@ -16,6 +17,23 @@
       <title></title>
     </head>
     <body>
+        <div id="modal-wrapper" class="modal">
+  
+            <form class="modal-content animate" action="/action_page.php">
+                  
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+              </div>
+          
+              <div class="container">
+                <input type="text" placeholder="Enter Username" name="uname">
+                <input type="password" placeholder="Enter Password" name="psw">        
+                <button type="submit" class="btn btn-primary aves">Inicio</button>
+              </div>
+              
+            </form>
+        </div>
+            
 
       <div class="div-enca">
         <div class="row">
@@ -41,7 +59,8 @@
               <div class="card-body">
                 <h5 class="card-title" align="center">PROFESORES</h5>
                 <p style="color: white;"> .</p>
-                <a href="#" class="btn btn-primary aves">Iniciar sesión </a>
+                <button onclick="document.getElementById('modal-wrapper').style.display='block'" class="btn btn-primary aves" >
+                    Iniciar Sesion</button>
               </div>
             </div>
           </div>
@@ -53,7 +72,8 @@
               <div class="card-body">
                 <h5 class="card-title" align="center">ALUMNO</h5>
                 <p style="color: white;"> .</p>
-                <a href="#" class="btn btn-primary aves">Inicio </a>
+                <button onclick="document.getElementById('modal-wrapper').style.display='block'" class="btn btn-primary aves" >
+                    Iniciar Sesion</button>
               </div>
             </div>
           </div>
@@ -70,10 +90,24 @@
           </div>
         </div>
       </div>
-    
+      <form id="formu" style="display: none;">
+        ...
+        .....
+        ......
+        </form>
 
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       
+      <script>
+          // If user clicks anywhere outside of the modal, Modal will close
+          
+          var modal = document.getElementById('modal-wrapper');
+          window.onclick = function(event) {
+              if (event.target == modal) {
+                  modal.style.display = "none";
+              }
+          }
+          </script>
     </body>
 </html>
