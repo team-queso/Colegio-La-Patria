@@ -34,23 +34,15 @@
       <ul class="list-group list-group-flush">
           <li><a href="{% url 'informacion' %} " class="list-group-item list-group-item-action bg-light">Información</a></li>
           <li><a href="{% url 'horarios' %}" class="list-group-item list-group-item-action bg-light">Horario</a></li>
-          <li><a href="#" class="list-group-item list-group-item-action bg-light">Calificaciones  <i class="fa-chevron-down"></i></a>
+          <li class="submenu"><a href="#" class="list-group-item list-group-item-action bg-light more" >Calificaciones  <i class="fa-chevron-down"></i></a>
               <ul class="list-group list-group-flush">
-                <li>Geografia I</li>
-                <li>Geografia II</li>
-                <li>Geografia III</li>
+                <li><a href="#" class="list-group-item list-group-item-action bg-light" id="submenu"> Geografia I</a></li>
+                <li><a href="#" class="list-group-item list-group-item-action bg-light" id="submenu">Geografia II</a></li>
+                <li><a href="#" class="list-group-item list-group-item-action bg-light" id="submenu">Geografia III</a></li>
               </ul>
           </li>
-          <li><a href="#" class="list-group-item list-group-item-action bg-light">Cerrar sesión</a></li>
-
-
-
+          <li><a href="#" class="list-group-item list-group-item-action bg-light" onclick="javascript:cambia_de_pagina();" >Cerrar sesión</a></li>
       </ul>
-        <a href="{% url 'informacion' %} " class="list-group-item list-group-item-action bg-light">Información</a>
-        <a href="{% url 'horarios' %}" class="list-group-item list-group-item-action bg-light">Horario</a>
-        <a href="{% url 'calificaciones' %}" class="icon-chevron-downn">Calificaciones</a>
-        <a href="{% url 'reportes' %}" class="list-group-item list-group-item-action bg-light">Reportes</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Cerrar sesión</a>
         
       </div>
     </div>
@@ -68,34 +60,12 @@
 
         </button>
 
-        <h1>Portal de alumnos</h1>
+        <h1>Portal de Profesores</h1>
       </nav>
        <div class="container-fluid">
        
 
 
-        <header>
-          <div class="menu_bar">
-            <a href="#" class="bt-menu"><span class="icon-list2"></span>Menú</a>
-          </div>
-       
-          <nav>
-            <ul>
-              <li><a href="#"><span class="icon-house"></span>Inicio</a></li>
-              <li><a href="#"><span class="icon-suitcase"></span>Trabajos</a></li>
-              <li class="submenu">
-                <a href="#"><span class="icon-rocket"></span>Proyectos<span class="caret icon-arrow-down6"></span></a>
-                <ul class="children">
-                  <li><a href="#">SubElemento #1 <span class="icon-dot"></span></a></li>
-                  <li><a href="#">SubElemento #2 <span class="icon-dot"></span></a></li>
-                  <li><a href="#">SubElemento #3 <span class="icon-dot"></span></a></li>
-                </ul>
-              </li>
-              <li><a href="#"><span class="icon-earth"></span>Servicios</a></li>
-              <li><a href="#"><span class="icon-mail"></span>Contacto</a></li>
-            </ul>
-          </nav>
-        </header>
 			
 
        	{% block content %}
@@ -113,6 +83,34 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
+
+    $('#submenu').click(function(){
+		$('#children').children.slideToggle();
+	});
   </script>
+<script>
+window.onload = init;
+    function init(){
+        document.querySelectorAll(".more")[0].addEventListener("click",submenu);
+        document.querySelector(".submenu > ul").style.display = "none"; 
+    }
+    
+    function submenu(){
+        var estado = document.querySelector(".submenu > ul").style.display;
+        if (estado == "none"){
+            document.querySelector(".submenu > ul").style.display = "block";
+        }else{
+            document.querySelector(".submenu > ul").style.display = "none";            
+        };
+        
+    }
+</script>
+<script>
+  function cambia_de_pagina(){
+      alert("Cesion cerrada")
+      location.href="index"
+  }
+  </script>
+  
 </body>
 </html>

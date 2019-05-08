@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from sistema.forms import ingresarAlumno,ingresarMateria,asignarMateria
-
+from sistema.forms import ingresarAlumno,ingresarMateria,asignarMateria,ingresarDocente
+from sistema.models import Alumno
 
 
 def primaria(request):
@@ -16,7 +16,7 @@ def calificaciones(request):
 def reportes(request):
 	return render(request,"primaria/reportes.html")
 def profe(request):
-	return render(request,"profe/basepro.html")
+	return render(request,"profesores/baseprofesores.html")
 def panel_administrador(request):
 	return render(request,"panel_admin/baseadmin.html")
 def panel_administrador_ingresar_alumno(request):
@@ -38,6 +38,15 @@ def panel_administrador_ingresar_materia(request):
 		formularioMateria = ingresarMateria()
 
 		return render(request,"panel_admin/ingresar_materia.html", {'formularioMateria': formularioMateria })
+def panel_administrador_ingresar_docente(request):
+	if request.method == 'POST':
+		ingresarDocenteV = ingresarDocente(request.POST)
+		if ingresarDocenteV.is_valid():
+			ingresarDocenteV.save()
+	else:
+		ingresarDocenteV = ingresarDocente()
+
+		return render(request,"panel_admin/ingresar_docentes.html", {'ingresarDocenteV': ingresarDocenteV })
 def panel_administrador_asignar_grupos(request):
 	if request.method == 'POST':
 		formularioAsignarMateria = asignarMateria(request.POST)
@@ -47,3 +56,15 @@ def panel_administrador_asignar_grupos(request):
 		formularioAsignarMateria = asignarMateria()
 
 		return render(request,"panel_admin/asignar_grupos.html", {'formularioAsignarMateria': formularioAsignarMateria })
+
+def panel_administrador_edit(request, no_control):
+	alumno = Alumno.Objects.get(id = no_control)
+	if request.method == 'GET':
+		formularioAlumno=ingresarAlumno(instance = reticula)
+	else:
+		formularioAlumno=ingresarAlumno(request.POST, instance=reticula)
+		if formularioAlumno.is_valid():
+			formularioAlumno.save()
+			
+	
+		return render(request,'panel_admin/reinscripción.html'),{'formularioAlumno':formularioAlumno}
