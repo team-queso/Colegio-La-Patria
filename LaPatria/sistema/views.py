@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 
 from sistema.forms import ingresarAlumno,ingresarMateria,asignarMateria,ingresarDocente
@@ -57,6 +57,7 @@ def panel_administrador_asignar_grupos(request):
 
 		return render(request,"panel_admin/asignar_grupos.html", {'formularioAsignarMateria': formularioAsignarMateria })
 
+<<<<<<< HEAD
 def panel_administrador_edit(request, no_control):
 	alumno = Alumno.Objects.get(id = no_control)
 	if request.method == 'GET':
@@ -67,4 +68,20 @@ def panel_administrador_edit(request, no_control):
 			formularioAlumno.save()
 			
 	
+=======
+def listarAlumno(request):
+	alumno = Alumno.objects.all()
+	contexto = {"alumnos" : alumno}
+	return render(request,'panel_admin/listar.html',contexto)
+
+def panel_administrador_editar(request, no_control):
+	alumno = Alumno.objects.get(id = no_control)
+	if request.method == 'GET':
+		formularioAlumno=ingresarAlumno(instance = alumno)
+	else:
+		formularioAlumno=ingresarAlumno(request.POST, instance=alumno)
+		if formularioAlumno.is_valid():
+			formularioAlumno.save()
+			
+>>>>>>> a4b67c1475cb7c8c14f191d04f2a74e94f2e617b
 		return render(request,'panel_admin/reinscripción.html'),{'formularioAlumno':formularioAlumno}

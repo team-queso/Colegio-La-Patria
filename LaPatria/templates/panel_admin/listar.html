@@ -1,0 +1,34 @@
+{% extends 'baseadmin.html' %}
+
+{% block content %}
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <td>Numero de control</td>
+            <td>Nombre</td>
+        </tr>
+
+    </thead>
+    <tbody>
+    {% if alumnos %}
+        {% for alumno in alumnos %}
+        <tr>
+            <td>{{ alumno.no_control }}</td>
+            <td>{{ alumno.nombre }}</td>
+        </tr>
+        {% endfor %}
+    {% else %}
+
+        <h1>No se encontraron registros</h1>
+
+    {% endif %}
+
+    </tbody>
+
+
+</table>
+
+
+{%endblock%}
