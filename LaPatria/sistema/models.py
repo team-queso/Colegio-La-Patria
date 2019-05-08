@@ -38,9 +38,9 @@ class Alumno(models.Model):
     telefono = models.IntegerField()
     domicilio = models.CharField(max_length=150)
     reticula = models.ForeignKey(Reticula, null = True, blank = True, on_delete=models.CASCADE)
-    
+
     def __str__(self):
-        return self.nombre   
+        return self.no_control  
 
 
 

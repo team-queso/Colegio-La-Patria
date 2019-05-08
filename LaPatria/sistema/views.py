@@ -62,13 +62,13 @@ def listarAlumno(request):
 	contexto = {"alumnos" : alumno}
 	return render(request,'panel_admin/listar.html',contexto)
 
-def panel_administrador_editar(request, no_control):
-	alumno = Alumno.objects.get(id = no_control)
+def panel_administrador_editar(request,no_control):
+	alumno = Alumno.objects.get(pk = no_control)
 	if request.method == 'GET':
 		formularioAlumno=ingresarAlumno(instance = alumno)
 	else:
 		formularioAlumno=ingresarAlumno(request.POST, instance=alumno)
 		if formularioAlumno.is_valid():
 			formularioAlumno.save()
-			
-		return render(request,'panel_admin/reinscripción.html'),{'formularioAlumno':formularioAlumno}
+			return redirect(listarAlumno)
+	return render(request,'panel_admin/reinscripcion.html',{'formularioAlumno':formularioAlumno})
