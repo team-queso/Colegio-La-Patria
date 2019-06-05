@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Alumno,Materia,Reticula,Docente
+from .models import Alumno,Docente,Materia,Ciclo_escolar,UnidadCalificada
 
 
 class ingresarAlumno(forms.ModelForm):
@@ -10,29 +10,37 @@ class ingresarAlumno(forms.ModelForm):
 
         fields = [
             'nombre',
+            'apellido_paterno',
+            'apellido_materno',
             'telefono',
             'domicilio',
             'pin',
-            'reticula',
+        
+            
             
         ]
 
         labels ={
             'nombre':'Nombre',
+            'apellido_paterno':'Apellido Paterno',
+            'apellido_materno':'Apelldio Materno',
             'telefono':'Telefono',
             'domicilio': 'Domicilio',
             'pin':'PIN',
-            'reticula':'Grupo'
+            
         
 
         }
 
         widgets = {
             'nombre': forms.TextInput(attrs={"class":'form-control'}),
+            'apellido_paterno': forms.TextInput(attrs={"class":'form-control'}),
+            'apellido_materno': forms.TextInput(attrs={"class":'form-control'}),
             'telefono': forms.TextInput(attrs={'class':'form-control'}),
             'domicilio': forms.TextInput(attrs={'class':'form-control'}),
             'pin': forms.TextInput(attrs={'class':'form-control'}),
-            'reticula': forms.Select(attrs={"class":'form-control'}),
+            
+            
         
 
                  }
@@ -41,54 +49,27 @@ class ingresarMateria(forms.ModelForm):
         model = Materia
 
         fields = [
-            'materia',
-            'claveMateria',
+            'nombreMateria',
+            'clave',
             
         ]
 
         labels ={
-            'materia':'Materia',
-            'claveMateria':'Clave de la Materia',
+            'nombreMateria':'Materia',
+            'clave':'Clave de la Materia',
             
 
         }
 
         widgets = {
-            'materia': forms.TextInput(attrs={"class":'form-control'}),
-            'claveMateria': forms.TextInput(attrs={'class':'form-control'}),
+            'nombreMateria': forms.TextInput(attrs={"class":'form-control'}),
+            'clave': forms.TextInput(attrs={'class':'form-control'}),
             
 
                  }
-class asignarMateria(forms.ModelForm):
 
-    class Meta:
-        model = Reticula
-
-        fields = [
-            'periodo',
-            'materiaAsignada',
-            'grupoAsignado',
-          
-            
-        ]
-
-        labels ={
-            'periodo':'Periodo',
-            'materiaAsignada': 'Materias',
-            'grupoAsignado':'Grupo',
-            
-            
-            
-
-        }
-
-        widgets = {
-            'periodo': forms.TextInput(attrs={'class':'form-control'}),
-            'materiaAsignada': forms.Select(attrs={'class':'form-control'}),
-            'grupoAsignado': forms.Select(attrs={"class":'form-control'}),
-            
-                 }
 class ingresarDocente(forms.ModelForm):
+
     class Meta:
         model = Docente
         
@@ -98,7 +79,7 @@ class ingresarDocente(forms.ModelForm):
         'telefono',
         'domicilio',
         'registro',
-        'pin',
+      
             
         ]
     
@@ -109,7 +90,7 @@ class ingresarDocente(forms.ModelForm):
         'telefono':'Telefono',
         'domicilio': 'Domicilio',
         'registro':'Cedula',
-        'pin':'PIN',
+        
         }
     
         widgets = {
@@ -118,5 +99,71 @@ class ingresarDocente(forms.ModelForm):
         'telefono': forms.TextInput(attrs={'class':'form-control'}),
         'domicilio': forms.TextInput(attrs={'class':'form-control'}),
         'registro': forms.TextInput(attrs={'class':'form-control'}),
-        'pin': forms.TextInput(attrs={'class':'form-control'}),
+    
+            }
+
+class ingresarCiclo(forms.ModelForm):
+
+    class Meta:
+        model = Ciclo_escolar
+            
+        
+        fields = [
+        'clave',
+        'descripcion',
+        'fecha_inicio',
+        'fecha_termino',
+        'finalizado',
+      
+            
+        ]
+    
+        labels ={
+
+        'clave':'Clave',
+        'descripcion':'Descripcion',
+        'fecha_inicio':'Fecha de inicio',
+        'fecha_termino': 'Fecha de terminación',
+        'finalizado':'Activo',
+        
+        }
+    
+        widgets = {
+        'clave': forms.TextInput(attrs={"class":'form-control'}),
+        'descripcion': forms.TextInput(attrs={'class':'form-control'}),
+        'fecha inicio': forms.DateInput(attrs={'class':'form-control'}),
+        'fecha termino': forms.DateInput(attrs={'class':'form-control'}),
+        'finalizado': forms.CheckboxInput(attrs={'class':'form-control'}),
+    
+            }
+class asignarCalificaciones(forms.ModelForm):
+
+    class Meta:
+        model = UnidadCalificada
+            
+        
+        fields = [
+        'unidad',
+        'puntuacion_asignada',
+        'alumno',
+
+      
+            
+        ]
+    
+        labels ={
+
+        'unidad':'Unidad-Materia',
+        'puntuacion_asignada':'Calificación',
+        'alumno':'Alumno',
+        
+        
+        }
+    
+        widgets = {
+        'unidad': forms.Select(attrs={"class":'form-control'}),
+        'puntuacion_asignada': forms.TextInput(attrs={'class':'form-control'}),
+        'alumno': forms.Select(attrs={'class':'form-control'}),
+
+    
             }

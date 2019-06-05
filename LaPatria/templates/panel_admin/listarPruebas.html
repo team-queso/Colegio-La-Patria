@@ -1,0 +1,36 @@
+{% extends 'baseadmin.html' %}
+
+{% block content %}
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <td>Unidad </td>
+            <td>Materia</td>
+            <td>Calificacion Esperada</td>
+            <td>Grado</td>
+            <td>Fecha de registro</td>
+        </tr>
+
+    </thead>
+    <tbody>
+
+        {% for unidades in unidad %}
+        <tr>
+            <td>{{ unidades.nombre }}</td>
+            <td>{{unidades.materia}}</td>
+            <td>{{unidades.puntuacion}}</td>
+            <td>{{unidades.grado}}</td>
+            <td>{{unidades.fecha_registro}}</td>
+        </tr>
+        {% endfor %}
+    
+
+    </tbody>
+
+
+</table>
+
+
+{%endblock%}
