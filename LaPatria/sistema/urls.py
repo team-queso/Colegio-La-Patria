@@ -18,4 +18,5 @@ urlpatterns = [
     path('administrador/calificacion', views.panel_administrador_asignar_calificacion, name='asignar_calificaciones'),
     path('administrador/reinscripcion/<int:no_control>', views.panel_administrador_editar, name='reinscribir'),
     path('administrador/listar', views.listarAlumno, name='listar'),
+    path('administrador/listarPruebas', views.listarPruebas, name='listar'),
     ]

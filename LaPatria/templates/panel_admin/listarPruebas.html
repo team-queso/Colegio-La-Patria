@@ -2,18 +2,35 @@
 
 {% block content %}
 
-{% for item in consultas %}
+<table class="table table-bordered">
 
-    {%for i in item %}
+    <thead>
+        <tr>
+            <td>Unidad </td>
+            <td>Materia</td>
+            <td>Calificacion Esperada</td>
+            <td>Grado</td>
+            <td>Fecha de registro</td>
+        </tr>
 
-    {(i)}
+    </thead>
+    <tbody>
 
-    {% endfor %}
+        {% for unidades in unidad %}
+        <tr>
+            <td>{{ unidades.nombre }}</td>
+            <td>{{unidades.materia}}</td>
+            <td>{{unidades.puntuacion}}</td>
+            <td>{{unidades.grado}}</td>
+            <td>{{unidades.fecha_registro}}</td>
+        </tr>
+        {% endfor %}
+    
+
+    </tbody>
 
 
-{% endfor %}
-
- 
+</table>
 
 
 {%endblock%}

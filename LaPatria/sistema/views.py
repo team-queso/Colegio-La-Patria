@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 
 from sistema.forms import ingresarAlumno,ingresarDocente,ingresarMateria,ingresarCiclo,asignarCalificaciones
-from sistema.models import Alumno
+from sistema.models import Alumno,UnidadCalificada,Unidad
 
 
 def primaria(request):
@@ -84,6 +84,10 @@ def panel_administrador_editar(request,no_control):
 			return redirect(listarAlumno)
 	return render(request,'panel_admin/reinscripcion.html',{'formularioAlumno':formularioAlumno})
 
+def listarPruebas(request):
+	unidades =  Unidad.objects.all()
+	contexto1 = {"unidad" : unidades }
+	return render(request, "panel_admin/listarPruebas.html", contexto1)
 
 			
 
