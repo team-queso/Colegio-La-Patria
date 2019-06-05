@@ -8,6 +8,8 @@
         <tr>
             <td>Numero de control</td>
             <td>Nombre</td>
+            <td>Apellido Paterno</td>
+            <td>Apelldio Materno</td>
             <td>Grupo Asignado</td>
         </tr>
 
@@ -18,7 +20,9 @@
         <tr>
             <td>{{ alumno.no_control }}</td>
             <td>{{ alumno.nombre }}</td>
-            <td>{{ alumno.reticula }}</td>
+            <td>{{ alumno.apellido_paterno }}</td>
+            <td>{{ alumno.apellido_materno }}</td>
+            <td>{{ alumno.id_grupo }}</td>
         </tr>
         {% endfor %}
     {% else %}

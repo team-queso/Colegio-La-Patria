@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 
-from sistema.forms import ingresarAlumno,ingresarMateria,asignarMateria,ingresarDocente
+from sistema.forms import ingresarAlumno,ingresarDocente,ingresarMateria,ingresarCiclo,asignarCalificaciones
 from sistema.models import Alumno
 
 
@@ -47,17 +47,27 @@ def panel_administrador_ingresar_docente(request):
 		ingresarDocenteV = ingresarDocente()
 
 		return render(request,"panel_admin/ingresar_docentes.html", {'ingresarDocenteV': ingresarDocenteV })
-def panel_administrador_asignar_grupos(request):
-	if request.method == 'POST':
-		formularioAsignarMateria = asignarMateria(request.POST)
-		if formularioAsignarMateria.is_valid():
-			formularioAsignarMateria.save()
-	else:
-		formularioAsignarMateria = asignarMateria()
 
-		return render(request,"panel_admin/asignar_grupos.html", {'formularioAsignarMateria': formularioAsignarMateria })
+def panel_administrador_ingresar_ciclo(request):
+	if request.method == 'POST':
+		formularioCiclo = ingresarCiclo(request.POST)
+		if formularioCiclo.is_valid():
+			formularioCiclo.save()
+	else:
+		formularioCiclo = ingresarCiclo()
+
+		return render(request,"panel_admin/ciclo_escolar.html", {'formularioCiclo': formularioCiclo })
 			
-	
+
+def panel_administrador_asignar_calificacion(request):
+	if request.method == 'POST':
+		formularioCalificacion = asignarCalificaciones(request.POST)
+		if formularioCalificacion.is_valid():
+			formularioCalificacion.save()
+	else:
+		formularioCalificacion = asignarCalificaciones()
+
+		return render(request,"panel_admin/calificaciones.html", {'formularioCalificacion': formularioCalificacion })
 def listarAlumno(request):
 	alumno = Alumno.objects.all()
 	contexto = {"alumnos" : alumno}
@@ -73,6 +83,8 @@ def panel_administrador_editar(request,no_control):
 			formularioAlumno.save()	
 			return redirect(listarAlumno)
 	return render(request,'panel_admin/reinscripcion.html',{'formularioAlumno':formularioAlumno})
+
+
 			
 
 	
