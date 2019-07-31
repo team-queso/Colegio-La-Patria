@@ -1,28 +1,48 @@
 {% extends 'baseadmin.html' %}
 
 {% block content %}
-
+<div class="container">
+        <div class="row">
+            <div class="col-md-12 search">
+                <form method="GET">
+                    <div id ="custom-search-input">
+                        <div class ="input-group col-md-12">
+                            <input type="text" class="form-control" placeholder="Buscar..." name="buscar">
+                            <button type="submit" class="boton btn-success"> Buscar Alumno</button>
+                        </div>
+                    </div>
+                </form>
+                    </div>
+        </div>
+    </div>
 <table class="table table-bordered">
 
     <thead>
         <tr>
-            <td>Numero de control</td>
-            <td>Nombre</td>
-            <td>Apellido Paterno</td>
-            <td>Apelldio Materno</td>
-            <td>Grupo Asignado</td>
+            <td>Alumno</td>
+            <td>Materia</td>
+            <td>Grado</td>
+            <td>Unidad1</td>
+            <td>Unidad2</td>
+            <td>Unidad3</td>
+            <td>Unidad4</td>
+            <td>Unidad5</td>
         </tr>
 
     </thead>
     <tbody>
-    {% if alumnos %}
-        {% for alumno in alumnos %}
+    {% if object_list %}
+        {% for Calificaciones in object_list %}
         <tr>
-            <td>{{ alumno.no_control }}</td>
-            <td>{{ alumno.nombre }}</td>
-            <td>{{ alumno.apellido_paterno }}</td>
-            <td>{{ alumno.apellido_materno }}</td>
-            <td>{{ alumno.id_grupo }}</td>
+            <td>{{ Calificaciones.alumno }}</td>
+            <td>{{ Calificaciones.materia }}</td>
+            <td>{{ Calificaciones.grado }}</td>
+            <td>{{ Calificaciones.Unidad1}}</td>
+            <td>{{ Calificaciones.Unidad2 }}</td>
+            <td>{{ Calificaciones.Unidad3 }}</td>
+            <td>{{ Calificaciones.Unidad4 }}</td>
+            <td>{{ Calificaciones.Unidad5 }}</td>
+            <td> <a class="btn btn-primary" href="{% url 'alumno:editar_calificacion' Calificaciones.pk %} ">  Editar </a> <a class="btn btn-primary" href="{% url 'alumno:eliminar_calificacion' Calificaciones.pk %} ">Eliminar </a> </td>
         </tr>
         {% endfor %}
     {% else %}

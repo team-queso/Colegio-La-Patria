@@ -18,11 +18,13 @@ from django.urls import path,include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.auth.views import LoginView
 
+
 urlpatterns = [
 
 	path('colegiolapatria/', include('sistema.urls')),
     path('',include('registros.urls')),
     path('admin/', admin.site.urls),
+   
 
 
 
