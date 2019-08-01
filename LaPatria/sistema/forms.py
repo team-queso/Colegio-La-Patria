@@ -1,7 +1,6 @@
 from django import forms
-
-from .models import Alumno,Docente,Materia,Ciclo_escolar,UnidadCalificada
-
+from django.db.models import Q
+from .models import Alumno,Docente,Materia,Calificaciones
 
 class ingresarAlumno(forms.ModelForm):
 
@@ -68,6 +67,7 @@ class ingresarMateria(forms.ModelForm):
 
                  }
 
+
 class ingresarDocente(forms.ModelForm):
 
     class Meta:
@@ -102,68 +102,49 @@ class ingresarDocente(forms.ModelForm):
     
             }
 
-class ingresarCiclo(forms.ModelForm):
-
+class ingresarCalificacion(forms.ModelForm):
+    
     class Meta:
-        model = Ciclo_escolar
-            
+        model = Calificaciones
         
         fields = [
-        'clave',
-        'descripcion',
-        'fecha_inicio',
-        'fecha_termino',
-        'finalizado',
-      
-            
-        ]
-    
-        labels ={
-
-        'clave':'Clave',
-        'descripcion':'Descripcion',
-        'fecha_inicio':'Fecha de inicio',
-        'fecha_termino': 'Fecha de terminación',
-        'finalizado':'Activo',
-        
-        }
-    
-        widgets = {
-        'clave': forms.TextInput(attrs={"class":'form-control'}),
-        'descripcion': forms.TextInput(attrs={'class':'form-control'}),
-        'fecha inicio': forms.DateInput(attrs={'class':'form-control'}),
-        'fecha termino': forms.DateInput(attrs={'class':'form-control'}),
-        'finalizado': forms.CheckboxInput(attrs={'class':'form-control'}),
-    
-            }
-class asignarCalificaciones(forms.ModelForm):
-
-    class Meta:
-        model = UnidadCalificada
-            
-        
-        fields = [
-        'unidad',
-        'puntuacion_asignada',
         'alumno',
-
+        'materia',
+        'grado',
+        'Unidad1',
+        'Unidad2',
+        'Unidad3',
+        'Unidad4',
+        'Unidad5',
+    
       
             
         ]
     
         labels ={
-
-        'unidad':'Unidad-Materia',
-        'puntuacion_asignada':'Calificación',
-        'alumno':'Alumno',
+        'alumno':'No_Control',
+        'materia':'Materia',
+        'grado': 'Grado',
+        'Unidad1':'Unidad 1',
+        'Unidad2':'Unidad 2',
+        'Unidad3':'Unidad 3',
+        'Unidad4':'Unidad 4',
+        'Unidad5':'Unidad 5',
         
+
         
         }
     
         widgets = {
-        'unidad': forms.Select(attrs={"class":'form-control'}),
-        'puntuacion_asignada': forms.TextInput(attrs={'class':'form-control'}),
-        'alumno': forms.Select(attrs={'class':'form-control'}),
-
+        'alumno': forms.TextInput(attrs={'class':'form-control'}),
+        'materia': forms.Select(attrs={'class':'form-control'}),
+        'grado'  : forms.TextInput(attrs={'class':'form-control'}),
+        'Unidad1': forms.TextInput(attrs={'class':'form-control'}),
+        'Unidad2': forms.TextInput(attrs={'class':'form-control'}),
+        'Unidad3': forms.TextInput(attrs={'class':'form-control'}),
+        'Unidad4': forms.TextInput(attrs={'class':'form-control'}),
+        'Unidad5': forms.TextInput(attrs={'class':'form-control'}),
+        
+        
     
             }

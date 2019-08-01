@@ -18,7 +18,7 @@
 
 	<title>
 		Bienvenido al sitio de la escuela primaria
-	</title>
+	</title> 
 </head>
 
 	
@@ -30,12 +30,12 @@
       <div class="sidebar-heading"> Colegio La Patria </div>
       <div class="list-group list-group-flush">
       <ul class="list-group list-group-flush">
-          <li><a href="{% url 'ingresar_alumno' %} " class="list-group-item list-group-item-action bg-light">Ingresar Alumno</a></li>
-          <li><a href="{% url 'ingresar_materia' %}" class="list-group-item list-group-item-action bg-light">Ingresar Materia </a></li>
-          <li><a href="{% url 'ingresar_docente' %}" class="list-group-item list-group-item-action bg-light">Ingresar Docente</a></li>
-          <li><a href="{% url 'ingresar_ciclo' %}" class="list-group-item list-group-item-action bg-light">Ingresar Ciclo</a></li>
-          <li><a href="{% url 'listar' %}" class="list-group-item list-group-item-action bg-light">Listar Alumnos</a></li>
-          <li><a href="{% url 'asignar_calificaciones' %}" class="list-group-item list-group-item-action bg-light">Calificaciones</a></li>
+          <li><a href="{% url 'alumno:ingresar_alumno' %} " class="list-group-item list-group-item-action bg-light">Ingresar Alumno</a></li>
+          <li><a href="{% url 'alumno:ingresar_materia' %}" class="list-group-item list-group-item-action bg-light">Ingresar Materia </a></li>
+          <li><a href="{% url 'alumno:ingresar_docente' %}" class="list-group-item list-group-item-action bg-light">Ingresar Docente</a></li>
+          <li><a href="{% url 'alumno:listar_alumnos' %}" class="list-group-item list-group-item-action bg-light">Listar Alumnos</a></li>
+          <li><a href="{% url 'alumno:listar_docente' %}" class="list-group-item list-group-item-action bg-light">Listar Docentes</a></li>
+          <li><a href="{% url 'alumno:asignar_calificaciones' %}" class="list-group-item list-group-item-action bg-light">Calificaciones</a></li>
           <li><a href="#" class="list-group-item list-group-item-action bg-light">Cerrar sesión</a></li>
 
       </ul>
@@ -64,8 +64,8 @@
 
        	{% block content %}
 
-aa
 
+          Bienvenido al sitio de administración del Colegio La Patria
 
 
 

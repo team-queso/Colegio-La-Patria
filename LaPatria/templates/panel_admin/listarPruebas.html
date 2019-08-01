@@ -6,26 +6,30 @@
 
     <thead>
         <tr>
-            <td>Unidad </td>
-            <td>Materia</td>
-            <td>Calificacion Esperada</td>
-            <td>Grado</td>
-            <td>Fecha de registro</td>
+            <td>Nombre </td>
+            <td>apellido_paterno</td>
+            <td>apellido_materno</td>
+            <td>grado</td>
+            <td>no_control</td>
         </tr>
 
     </thead>
     <tbody>
-
-        {% for unidades in unidad %}
+        {% if object_list %}
+        {% for Alumno in object_list %}
         <tr>
-            <td>{{ unidades.nombre }}</td>
-            <td>{{unidades.materia}}</td>
-            <td>{{unidades.puntuacion}}</td>
-            <td>{{unidades.grado}}</td>
-            <td>{{unidades.fecha_registro}}</td>
+            <td>{{Alumno.nombre }}</td>
+            <td>{{Alumno.apellido_paterno}}</td>
+            <td>{{Alumno.apellido_materno}}</td>
+            <td>{{Alumno.grado}}</td>
+            <td>{{Alumno.no_control}}</td>
+            <td><a class="btn btn-primary" href="{% url 'alumno:editar_alumno' calificar.pk %} ">  Editar </a> <a class="btn btn-primary" href="{% url 'alumno:eliminar_alumno' calificar.pk %} ">Eliminar </a></td>
         </tr>
         {% endfor %}
-    
+
+        {% else %}
+        <h1>No hay registros de alumnos</h1>
+        {% endif %}
 
     </tbody>
 

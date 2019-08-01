@@ -1,8 +1,14 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
+from django.db.models import Q
+from django.urls import reverse_lazy
+from django.contrib import messages
+from django.views.generic import ListView,CreateView,UpdateView,DeleteView, View
+from sistema.forms import ingresarAlumno,ingresarDocente,ingresarMateria,ingresarCalificacion
+from sistema.models import Calificaciones,Alumno,Materia,Docente
 
-from sistema.forms import ingresarAlumno,ingresarDocente,ingresarMateria,ingresarCiclo,asignarCalificaciones
-from sistema.models import Alumno,UnidadCalificada,Unidad
+
+
 
 
 def primaria(request):
@@ -59,36 +65,123 @@ def panel_administrador_ingresar_ciclo(request):
 		return render(request,"panel_admin/ciclo_escolar.html", {'formularioCiclo': formularioCiclo })
 			
 
-def panel_administrador_asignar_calificacion(request):
+
+"""def panel_administrador_asignar_calificacion(request):
+		materia = Materia.objects.filter(Q(grado = 2))
+		contexto = {"materias" : materia} 
+		return render(request,"panel_admin/calificaciones.html", contexto)"""
+
+"""def panel_administrador_calificar(request):
 	if request.method == 'POST':
-		formularioCalificacion = asignarCalificaciones(request.POST)
-		if formularioCalificacion.is_valid():
-			formularioCalificacion.save()
-	else:
-		formularioCalificacion = asignarCalificaciones()
+		form = ingresarCalificacion(request.POST)
+		if form.is_valid():
+			form.save()
+		else:
+			form = ingresarCalificacion()
 
-		return render(request,"panel_admin/calificaciones.html", {'formularioCalificacion': formularioCalificacion })
-def listarAlumno(request):
-	alumno = Alumno.objects.all()
-	contexto = {"alumnos" : alumno}
-	return render(request,'panel_admin/listar.html',contexto)
+			return render(request,"panel_admin/calificaciones.html", form)"""		
 
-def panel_administrador_editar(request,no_control):
-	alumno = Alumno.objects.get(pk = no_control)
-	if request.method == 'GET':
-		formularioAlumno=ingresarAlumno(instance = alumno)
-	else:
-		formularioAlumno=ingresarAlumno(request.POST, instance=alumno)
-		if formularioAlumno.is_valid():
-			formularioAlumno.save()	
-			return redirect(listarAlumno)
-	return render(request,'panel_admin/reinscripcion.html',{'formularioAlumno':formularioAlumno})
 
-def listarPruebas(request):
-	unidades =  Unidad.objects.all()
-	contexto1 = {"unidad" : unidades }
-	return render(request, "panel_admin/listarPruebas.html", contexto1)
 
-			
-
+class AlumnosList(ListView):			
+	queryset = Alumno.objects.all()
+	template_name = 'panel_admin/listar_alumnos.html'
 	
+	def get_queryset(self):
+		queryset = self.request.GET.get("buscar")
+		if queryset:
+			q = Alumno.objects.filter(
+				Q(no_control = queryset)
+				).order_by('grado')
+			return q 
+		else:
+			q = Alumno.objects.all()
+			return q 	
+		
+class AlumnoCreate(CreateView):
+	model = Alumno
+	form_class = ingresarAlumno
+	template_name = 'panel_admin/ingresar_alumno.html'
+	success_url = reverse_lazy("alumno:listar_alumnos")
+
+class AlumnosUpdate(UpdateView):
+	model = Alumno
+	form_class = ingresarAlumno
+	template_name = 'panel_admin/editar_alumno.html'
+	success_url = reverse_lazy("alumno:listar_alumnos")
+
+
+class AlumnosDelete(DeleteView):
+	model = Alumno
+	template_name = 'panel_admin/eliminar_alumno.html'
+	success_url = reverse_lazy("alumno:listar_alumnos")
+
+class DocenteList(ListView):			
+	queryset = Docente.objects.all()
+	template_name = 'panel_admin/listar_docente.html'
+	
+	def get_queryset(self):
+		queryset = self.request.GET.get("buscar")
+		if queryset:
+			q = Docente.objects.filter(
+				Q(pk = queryset)
+				).order_by('grado')
+			return q 
+		else:
+			q = Docente.objects.all()
+			return q 	
+class DocenteCreate(CreateView):
+	model = Docente
+	form_class = ingresarDocente
+	template_name = 'panel_admin/ingresar_docentes.html'
+	success_url = reverse_lazy("alumno:listar_docente")
+
+class DocenteUpdate(UpdateView):
+	model = Docente
+	form_class = ingresarDocente
+	template_name = 'panel_admin/editar_docente.html'
+	success_url = reverse_lazy("alumno:listar_docente")
+
+class DocenteDelete(DeleteView):
+	model = Docente
+	template_name = 'panel_admin/eliminar_docente.html'
+	success_url = reverse_lazy("alumno:listar_docente")
+
+class CalificacionCreate(CreateView):
+	model = Calificaciones
+	form_class = ingresarCalificacion
+	template_name = 'panel_admin/calificaciones.html'
+	success_url = reverse_lazy("alumno:listar_alumnos")
+
+class CalificacionUpdate(UpdateView):
+	model = Calificaciones
+	form_class = ingresarCalificacion
+	template_name = 'panel_admin/editar_calificacion.html'
+	success_url = reverse_lazy("alumno:listar_alumnos")
+
+class CalificacionDelete(DeleteView):
+	model = Calificaciones
+	template_name = 'panel_admin/eliminar_calificacion.html'
+	success_url = reverse_lazy("alumno:listar_alumnos")
+
+class CalificacionList(ListView):
+	Model = Calificaciones
+	template_name = "panel_admin/listar.html"
+	def get_queryset(self):
+			q = Calificaciones.objects.filter(
+				Q(alumno__no_control = self.kwargs['pk'])
+				).order_by('grado')
+			return q 
+		
+
+
+	"""def get_queryset(self, no_control):
+		queryset = self.request.GET.get('no_control')
+		if queryset:
+			q = Calificaciones.objects.filter(
+				Q(alumno__Alumno_no_control = queryset)
+				).order_by('grado')
+			return q 
+		else:
+			q = Calificaciones.objects.all()
+			return q"""

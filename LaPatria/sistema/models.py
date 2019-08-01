@@ -6,41 +6,19 @@ from django.contrib.auth.models import User
 class Materia (models.Model):
     nombreMateria = models.CharField(max_length=30, unique = True)
     clave = models.CharField(max_length=6, unique = True)
+    grado = models.IntegerField(default=1)
 
     def __str__(self):
         return self.nombreMateria
 
-class Ciclo_escolar(models.Model):
-    clave = models.CharField(max_length=50)
-    descripcion = models.CharField(max_length=100)
-    fecha_inicio = models.DateField()
-    fecha_termino = models.DateField()
-    finalizado = models.BooleanField(default=False)
-    fecha_registro = models.DateField(auto_now=True)
-
-    def __str__(self):
-        return "%s %s %s" %(self.clave,self.fecha_inicio,self.fecha_termino)
-
-    class Meta:
-        verbose_name="ciclo_escolar"
-        verbose_name_plural="ciclo_escolar"
-class Grados(models.Model):
-    clave = models.CharField(max_length=50)
-    materias = models.ManyToManyField(Materia)
-    fecha_registro = models.DateField(auto_now=True)
-
-    def __str__(self):
-        return self.clave
-
-    class Meta:
-        verbose_name="grados"
-        verbose_name_plural="grados"
 class Alumno(models.Model):
     no_control = models.AutoField(primary_key=True)
     pin = models.IntegerField()
     nombre = models.CharField(max_length=40)
     apellido_paterno = models.CharField(max_length = 20, null = True, blank=True)
     apellido_materno = models.CharField(max_length = 20, null=True , blank = True)
+    nivel_educativo = models.CharField(max_length = 20, null=True , blank = True)
+    grado = models.IntegerField(default=1)
     telefono = models.CharField(max_length = 10)
     domicilio = models.CharField(max_length=50)
     
@@ -63,25 +41,27 @@ class Docente (models.Model):
     domicilio = models.CharField(max_length=50)
     registro = models.CharField(max_length=15)
     
-
-
+    class Meta:
+        verbose_name="Docente"
+        verbose_name_plural="Docentes"
 
     def __str__(self):
         return self.nombreDocente
-class Unidad (models.Model):
-    nombre = models.CharField(max_length=100)
-    puntuacion = models.IntegerField()
-    grado = models.ForeignKey(Grados, null = True, blank = True, on_delete= models.CASCADE)
-    materia = models.ForeignKey(Materia, null = True, blank = True, on_delete= models.CASCADE)
-    fecha_registro = models.DateField(auto_now=True)
 
-    def __str__(self):
-        return "%s %s"%(self.nombre,self.materia)
+class Calificaciones (models.Model):
+    
+    alumno = models.ForeignKey(Alumno, on_delete = models.CASCADE )
+    materia = models.ForeignKey(Materia, on_delete = models.CASCADE)
+    grado = models.IntegerField(default=1)
+    Unidad1 = models.IntegerField(default=0)
+    Unidad2 = models.IntegerField(default=0)
+    Unidad3 = models.IntegerField(default=0)
+    Unidad4 = models.IntegerField(default=0)
+    Unidad5 = models.IntegerField(default=0)
 
-class UnidadCalificada (models.Model):
-    unidad = models.ForeignKey(Unidad, null = True, blank = True, on_delete= models.CASCADE)
-    puntuacion_asignada = models.IntegerField()
-    alumno = models.ForeignKey(Alumno,null=True,blank=True, on_delete=models.CASCADE)
+    class Meta:
+        verbose_name="Calificaciones"
+        verbose_name_plural="Calificaciones"
 
-    def __str__(self):
-        return "%s %s %s" % (self.unidad,self.alumno,self.puntuacion_asignada)
+    def unicode(self):
+        return self.alumno
