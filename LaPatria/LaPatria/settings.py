@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from django.urls import reverse_lazy
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -60,9 +61,11 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(SETTINGS_PATH, 'templates'),
+        os.path.join(BASE_DIR, 'templates'),
         os.path.join(BASE_DIR, 'templates/primaria' ),
         os.path.join(BASE_DIR, 'templates/panel_admin'),
         os.path.join(BASE_DIR, 'templates/profesores'),
+        os.path.join(BASE_DIR, 'templates/otros'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -135,4 +138,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/js'),
     
     )
-LOGIN_REDIRECT_URL = 'informacion'
+
+LOGIN_REDIRECT_URL = reverse_lazy("alumno:listar_alumnos")
+LOGOUT_REDIRECT_URL = reverse_lazy("login")
