@@ -1,40 +1,126 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+      <!-- Required meta tags -->
+         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.2 ">
+        <link href="{%static 'css/bootstrap.css'%}" rel="stylesheet">
+       <link href="{%static 'css-manual/manu.css'%}" rel="stylesheet">
+        <link href="{%static 'css-manual/estilo.css'%}" rel="stylesheet">                         
+         <link href="https://fonts.googleapis.com/css?family=Martel:400,900" rel="stylesheet">
 
 
-{% block title %}
-Login
-{% endblock %}
+      <!-- Bootstrap CSS -->
+      
+      <title></title>
+    </head>
+    <body>
+        <div id="modal-wrapper" class="modal">
+  
+            <form method="post" class="modal-content" >
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                </div>
+            <div class="container">
+              {% csrf_token %}
+              <div class="">
+               <div class="">
+                <div class="">
+                  Usuario
+                 {{form.usuario.label_tag}}
+                 {{form.username}}
+                </div>
+               </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="">
+               <div class="">
+                <div class="">
+                  Contraseña
+                 {{form.contraseña.label_tag}}
+                 {{form.password}}
+                </div>
+               </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="">
+               <div class="">
+                <div class="">
+                 <a href="#">Olvide mi Contraseña:</label>
+                </div>
+                <div><input class="btn btn-primary" type="submit" value="Ingresar"></div>
+               </div>
+              </div>
+            </div>
+              
+             </form>
+        </div>
+            
 
-{% block navbar%}
-{% endblock %}
+      <div class="div-enca">
+        <div class="row">
+          <div class="col div-ima1">
+            <img src="{% static 'logo-sep.png' %}" height="80px">  
+          </div>
+          <div class="col div-ima2">
+           COLEGIO "LA PATRIA "
+          </div>
+          <div class="col div-ima3">
+            <img src="{% static 'logo-cole.png' %}" height="80px"> 
+          </div>
+        </div>
+      </div>
 
-{% block content %}
-<form method="post">
- {% csrf_token %}
- <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-   <div class="form-group">
-    {{form.username.label_tag}}
-    {{form.username}}
-   </div>
-  </div>
- </div>
- <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-   <div class="form-group">
-    {{form.password.label_tag}}
-    {{form.password}}
-   </div>
-  </div>
- </div>
- <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-   <div class="form-group">
-    <a href="#">Olvide mi Contraseña:</label>
-    <input class="btn btn-primary" type="submit" value="Ingresar">
-   </div>
-  </div>
- </div>
- 
-</form>
+      <div class="container  div-con-move">
 
-{% endblock %}
+        <div class="row">
+
+          <div class="col div-left border border-dark rounded shadow p-3 mb-5 bg-white rounded" >
+            <div class="card" style="float: right;">
+              <img src="{% static 'profe.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" align="center">PROFESORES</h5>
+                <p style="color: white;"> .</p>
+                <button onclick="document.getElementById('modal-wrapper').style.display='block'" class="btn btn-primary aves" >
+                    Iniciar Sesion</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col div-right shadow p-3 mb-5 bg-white rounded border border-dark rounded">
+            <div class="card">
+              <img src="{% static 'admin.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" align="center">ADMINISTRACIÓN</h5>
+                <p style="color: white;"> .</p>
+                <button onclick="document.getElementById('modal-wrapper').style.display='block'" class="btn btn-primary aves" >
+                    Iniciar Sesion</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form id="formu" style="display: none;">
+        ...
+        .....
+        ......
+        </form>
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      
+      <script>
+          // If user clicks anywhere outside of the modal, Modal will close
+          
+          var modal = document.getElementById('modal-wrapper');
+          window.onclick = function(event) {
+              if (event.target == modal) {
+                  modal.style.display = "none";
+              }
+          }
+          </script>
+    </body>
+</html>

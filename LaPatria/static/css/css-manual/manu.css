@@ -17,8 +17,8 @@
 }
 
 .div-container {
-	position: relative; 
-	top: 200px;
+	position: absolute; 
+	top: 10px;
 }
 
 .div-enca {
@@ -58,7 +58,7 @@
 	align-items: center;
 }
 .div-conteinerH {
-        top: 50px;
+        top: 20px;
         position: relative;
 }
 .derecha {
