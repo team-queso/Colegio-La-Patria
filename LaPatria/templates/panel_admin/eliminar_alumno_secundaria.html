@@ -1,0 +1,18 @@
+{% extends 'baseadmin.html' %}
+
+{% block content %}
+
+        <form method="POST"> 
+
+
+            {% csrf_token %}
+            {{ form.as_p }}
+            <h3> ¿Desea Eliminar la calificación? </h3>
+            <button class="btn btn-danger" type="submit">Sí, eliminar</button>
+            <a class="btn btn-default " href="{% url 'alumno:listar_alumnos_secundaria' %}">Cancelar</a>
+        
+            
+          </form>
+    
+
+{%endblock%}

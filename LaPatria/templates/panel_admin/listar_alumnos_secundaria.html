@@ -1,0 +1,53 @@
+{% extends 'baseadmin.html' %}
+
+{% block content %}
+
+<table class="table table-bordered">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 search">
+                <form method="GET">
+                    <div id ="custom-search-input">
+                        <div class ="input-group col-md-12">
+                            <input type="text" class="form-control" placeholder="Buscar..." name="buscar">
+                            <button type="submit" class="boton btn-success"> Buscar Alumno</button>
+                        </div>
+                    </div>
+                </form>
+                    </div>
+        </div>
+    </div>
+    <thead>
+        <tr>
+            <td>Nombre </td>
+            <td>apellido_paterno</td>
+            <td>apellido_materno</td>
+            <td>grado</td>
+            <td>no_control</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for AlumnoSecundaria in object_list %}
+        <tr>
+            <td>{{AlumnoSecundaria.nombre }}</td>
+            <td>{{AlumnoSecundaria.apellido_paterno}}</td>
+            <td>{{AlumnoSecundaria.apellido_materno}}</td>
+            <td>{{AlumnoSecundaria.grado}}</td>
+            <td>{{AlumnoSecundaria.no_control}}</td>
+            <td><a class="btn btn-primary" href="{% url 'alumno:editar_alumno_secundaria' AlumnoSecundaria.no_control %} ">  Editar </a> <a class="btn btn-primary" href="{% url 'alumno:eliminar_alumno_secundaria' AlumnoSecundaria.no_control %} ">Eliminar </a><a class="btn btn-primary" href="{% url 'alumno:listar' AlumnoSecundaria.no_control %} ">Calificaciones </a></td>
+        </tr>
+        {% endfor %}
+
+        {% else %}
+        <h1>No hay registros de alumnos</h1>
+        {% endif %}
+
+    </tbody>
+
+
+</table>
+
+
+{%endblock%}

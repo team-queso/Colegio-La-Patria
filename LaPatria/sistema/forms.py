@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models import Q
-from .models import Alumno,Docente,Materia,Calificaciones
+from .models import Alumno,Docente,Materia,Calificaciones,AlumnoSecundaria,MateriaSecundaria
 
 class ingresarAlumno(forms.ModelForm):
 
@@ -25,7 +25,7 @@ class ingresarAlumno(forms.ModelForm):
             'apellido_materno':'Apelldio Materno',
             'telefono':'Telefono',
             'domicilio': 'Domicilio',
-            'pin':'PIN',
+            'pin':'Grado',
             
         
 
@@ -103,6 +103,7 @@ class ingresarDocente(forms.ModelForm):
             }
 
 class ingresarCalificacion(forms.ModelForm):
+
     
     class Meta:
         model = Calificaciones
@@ -148,3 +149,68 @@ class ingresarCalificacion(forms.ModelForm):
         
     
             }
+
+class ingresarAlumnoSecundaria(forms.ModelForm):
+
+
+    class Meta:
+        model = AlumnoSecundaria
+
+        fields = [
+            'nombre',
+            'apellido_paterno',
+            'apellido_materno',
+            'telefono',
+            'domicilio',
+
+        
+            
+            
+        ]
+
+        labels ={
+            'nombre':'Nombre',
+            'apellido_paterno':'Apellido Paterno',
+            'apellido_materno':'Apelldio Materno',
+            'telefono':'Telefono',
+            'domicilio': 'Domicilio',
+       
+            
+        
+
+        }
+
+        widgets = {
+            'nombre': forms.TextInput(attrs={"class":'form-control'}),
+            'apellido_paterno': forms.TextInput(attrs={"class":'form-control'}),
+            'apellido_materno': forms.TextInput(attrs={"class":'form-control'}),
+            'telefono': forms.TextInput(attrs={'class':'form-control'}),
+            'domicilio': forms.TextInput(attrs={'class':'form-control'}),
+            
+            
+        
+
+                 }
+class ingresarMateriaSecundaria(forms.ModelForm):
+    class Meta:
+        model = MateriaSecundaria
+
+        fields = [
+            'nombreMateria',
+            'clave',
+            
+        ]
+
+        labels ={
+            'nombreMateria':'Materia',
+            'clave':'Clave de la Materia',
+            
+
+        }
+
+        widgets = {
+            'nombreMateria': forms.TextInput(attrs={"class":'form-control'}),
+            'clave': forms.TextInput(attrs={'class':'form-control'}),
+            
+
+                 }
