@@ -36,8 +36,13 @@
           <li><a href="{% url 'alumno:listar_alumnos' %}" class="list-group-item list-group-item-action bg-light">Listar Alumnos</a></li>
           <li><a href="{% url 'alumno:listar_docente' %}" class="list-group-item list-group-item-action bg-light">Listar Docentes</a></li>
           <li><a href="{% url 'alumno:asignar_calificaciones' %}" class="list-group-item list-group-item-action bg-light">Calificaciones</a></li>
-          <li><a href="{% url 'logout' %}" class="list-group-item list-group-item-action bg-light">Cerrar sesión</a></li>
+          
 
+          <li><a href="{% url 'alumno:ingresar_alumno_secundaria' %} " class="list-group-item list-group-item-action bg-light">Ingresar Alumno Secundaria</a></li>
+          <li><a href="{% url 'alumno:listar_alumnos_secundaria' %}" class="list-group-item list-group-item-action bg-light">Listar Alumnos Secundaria</a></li>
+          
+
+          <li><a href="{% url 'logout' %}" class="list-group-item list-group-item-action bg-light">Cerrar sesión</a></li>
       </ul>
         
       </div>

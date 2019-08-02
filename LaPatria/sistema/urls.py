@@ -8,7 +8,7 @@ urlpatterns = [
     
     
    
-    
+    path('administrador/imprimir', PdfPrueba.as_view(), name='imprimir'),
     path('administrador/ingresar-alumno', AlumnoCreate.as_view() , name='ingresar_alumno'),
     path('administrador/ingresar-materia', MateriaCreate.as_view(), name='ingresar_materia'),
     path('administrador/ingresar-docente',DocenteCreate.as_view(), name='ingresar_docente'),
@@ -22,4 +22,9 @@ urlpatterns = [
     path('administrador/eliminar-alumno/<int:pk>', AlumnosDelete.as_view(), name='eliminar_alumno'),
     path('administrador/editar-docente/<int:pk>', DocenteUpdate.as_view(), name='editar_docente'),
     path('administrador/eliminar-docente/<int:pk>', DocenteDelete.as_view(), name='eliminar_docente'),
+
+    path('administrador/listar-alumnos-secundaria', AlumnosSecundariaList.as_view() , name='listar_alumnos_secundaria'),
+    path('administrador/ingresar-alumno-secundaria', AlumnoSecundariaCreate.as_view() , name='ingresar_alumno_secundaria'),
+    path('administrador/editar-alumno-secundaria/<int:pk>', AlumnosSecundariaUpdate.as_view(), name='editar_alumno_secundaria'),
+    path('administrador/eliminar-alumno-secundaria/<int:pk>', AlumnosSecundariaDelete.as_view(), name='eliminar_alumno_secundaria'),
     ]
