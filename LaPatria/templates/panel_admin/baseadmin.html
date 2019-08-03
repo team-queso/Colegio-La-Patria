@@ -30,17 +30,29 @@
       <div class="sidebar-heading"> Colegio La Patria </div>
       <div class="list-group list-group-flush">
       <ul class="list-group list-group-flush">
-          <li><a href="{% url 'alumno:ingresar_alumno' %} " class="list-group-item list-group-item-action bg-light">Ingresar Alumno</a></li>
           <li><a href="{% url 'alumno:ingresar_materia' %}" class="list-group-item list-group-item-action bg-light">Ingresar Materia </a></li>
           <li><a href="{% url 'alumno:ingresar_docente' %}" class="list-group-item list-group-item-action bg-light">Ingresar Docente</a></li>
-          <li><a href="{% url 'alumno:listar_alumnos' %}" class="list-group-item list-group-item-action bg-light">Listar Alumnos</a></li>
           <li><a href="{% url 'alumno:listar_docente' %}" class="list-group-item list-group-item-action bg-light">Listar Docentes</a></li>
           <li><a href="{% url 'alumno:asignar_calificaciones' %}" class="list-group-item list-group-item-action bg-light">Calificaciones</a></li>
-          
-
-          <li><a href="{% url 'alumno:ingresar_alumno_secundaria' %} " class="list-group-item list-group-item-action bg-light">Ingresar Alumno Secundaria</a></li>
-          <li><a href="{% url 'alumno:listar_alumnos_secundaria' %}" class="list-group-item list-group-item-action bg-light">Listar Alumnos Secundaria</a></li>
-          
+          <li>
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Primaria
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'alumno:ingresar_alumno' %} " class="list-group-item list-group-item-action bg-light">Ingresar Alumno</a></li>
+                <li><a href="{% url 'alumno:listar_alumnos' %}" class="list-group-item list-group-item-action bg-light">Listar Alumnos</a></li>
+              </ul>
+            </div></li>
+          <li>
+              <div class="dropdown">
+                  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Secundaria
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="{% url 'alumno:ingresar_alumno_secundaria' %} " class="list-group-item list-group-item-action bg-light">Ingresar Alumnos </a></li>
+                    <li><a href="{% url 'alumno:listar_alumnos_secundaria' %}" class="list-group-item list-group-item-action bg-light">Listar Alumnos</a></li>
+                  </ul>
+                </div>
+          </li>
 
           <li><a href="{% url 'logout' %}" class="list-group-item list-group-item-action bg-light">Cerrar sesión</a></li>
       </ul>
