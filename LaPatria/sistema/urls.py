@@ -8,6 +8,8 @@ urlpatterns = [
     
     
    
+    path("horario/", horario , name="horario"),
+
     path('administrador/imprimir', PdfPrueba.as_view(), name='imprimir'),
     path('administrador/ingresar-alumno', AlumnoCreate.as_view() , name='ingresar_alumno'),
     path('administrador/ingresar-materia', MateriaCreate.as_view(), name='ingresar_materia'),

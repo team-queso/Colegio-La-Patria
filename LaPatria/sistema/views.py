@@ -12,6 +12,9 @@ from django.contrib.auth.decorators import login_required
 from sistema.utils import render_to_pdf
 import pdfkit
 
+def horario(request):
+    template_name = 'primaria/horarios.html'
+    return render(request, template_name)
 
 class MateriaCreate(LoginRequiredMixin, CreateView):
 	model = Materia
