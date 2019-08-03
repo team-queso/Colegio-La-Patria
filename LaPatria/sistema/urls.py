@@ -7,8 +7,9 @@ app_name = 'alumno'
 urlpatterns = [
     
     
-   
-    path("horario/", horario , name="horario"),
+    path("profesores/", profesores, name="profesores"),
+    path("profesores/horario/", horario , name="horario"),
+    path("profesores/calificar/", CalificacionDocenteCreate.as_view(),name="asignar_calificacion_docente"),
 
     path('administrador/ingresar-horario', HorarioCreate.as_view() , name='ingresar_horario'),
 

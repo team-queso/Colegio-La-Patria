@@ -29,7 +29,8 @@
       <div class="sidebar-heading"> Colegio La Patria </div>
       <div class="list-group list-group-flush">
      
-
+        <li><a href="{% url 'alumno:horario' %} " class="list-group-item list-group-item-action bg-light">Horario</a></li>
+        <li><a href="{% url 'alumno:asignar_calificacion_docente' %}" class="list-group-item list-group-item-action bg-light">Asignar Calificaciones</a></li>
 
         
       </div>
@@ -43,7 +44,7 @@
         	<img src="{% static 'menu.png' %}">
 
          </button>
-
+         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
         </button>

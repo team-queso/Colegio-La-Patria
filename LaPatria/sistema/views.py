@@ -15,6 +15,9 @@ import pdfkit
 def horario(request):
     template_name = 'primaria/horarios.html'
     return render(request, template_name)
+def profesores(request):
+	template_name2 = 'profesores/baseprofesores.html'
+	return render(request, template_name2)
 
 class MateriaCreate(LoginRequiredMixin, CreateView):
 	model = Materia
@@ -170,3 +173,9 @@ class HorarioCreate(CreateView):
 	form_class = ingresarHorario
 	template_name = 'panel_admin/ingresar_horario.html'
 	success_url = reverse_lazy("alumno:listar_alumnos")
+
+class CalificacionDocenteCreate(LoginRequiredMixin,CreateView):
+	model = Calificaciones
+	form_class = ingresarCalificacion
+	template_name = 'primaria/calificaciones.html'
+	success_url = reverse_lazy("alumno:asignar_calificacion_docente")
