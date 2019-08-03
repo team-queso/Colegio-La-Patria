@@ -106,3 +106,21 @@ class CalificacionesSecundaria (models.Model):
 
     def unicode(self):
         return self.alumno
+
+class Horario (models.Model):
+    
+    docente = models.ForeignKey(Docente, on_delete = models.CASCADE )
+    materia = models.ForeignKey(Materia, on_delete = models.CASCADE)
+    grado = models.IntegerField(default=1)
+    Dia1 = models.TimeField()
+    Dia2 = models.TimeField()
+    Dia3 = models.TimeField()
+    Dia4 = models.TimeField()
+    Dia5 = models.TimeField()
+
+    class Meta:
+        verbose_name="Horario"
+        verbose_name_plural="Horarios"
+
+    def unicode(self):
+        return self.docente
