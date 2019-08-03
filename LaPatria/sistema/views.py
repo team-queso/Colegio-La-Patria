@@ -4,8 +4,8 @@ from django.db.models import Q
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView, View
-from sistema.forms import ingresarAlumno,ingresarDocente,ingresarMateria,ingresarCalificacion,ingresarAlumnoSecundaria,ingresarMateriaSecundaria
-from sistema.models import Calificaciones,Alumno,Materia,Docente,AlumnoSecundaria,CalificacionesSecundaria,MateriaSecundaria
+from sistema.forms import ingresarAlumno,ingresarDocente,ingresarMateria,ingresarCalificacion,ingresarAlumnoSecundaria,ingresarMateriaSecundaria,ingresarHorario
+from sistema.models import Calificaciones,Alumno,Materia,Docente,AlumnoSecundaria,CalificacionesSecundaria,MateriaSecundaria,Horario
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -165,3 +165,8 @@ class PdfPrueba(View):
 		}
 		pdf = render_to_pdf("panel_admin/imprimir.html",datos)
 		return HttpResponse(pdf, content_type="application/pdf")
+class HorarioCreate(CreateView):
+	model = Horario
+	form_class = ingresarHorario
+	template_name = 'panel_admin/ingresar_horario.html'
+	success_url = reverse_lazy("alumno:listar_alumnos")

@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models import Q
-from .models import Alumno,Docente,Materia,Calificaciones,AlumnoSecundaria,MateriaSecundaria
+from .models import Alumno,Docente,Materia,Calificaciones,AlumnoSecundaria,MateriaSecundaria,Horario
 
 class ingresarAlumno(forms.ModelForm):
 
@@ -214,3 +214,50 @@ class ingresarMateriaSecundaria(forms.ModelForm):
             
 
                  }
+class ingresarHorario(forms.ModelForm):
+
+    
+    class Meta:
+        model = Horario
+        
+        fields = [
+        'docente',
+        'materia',
+        'grado',
+        'Dia1',
+        'Dia2',
+        'Dia3',
+        'Dia4',
+        'Dia5',
+    
+      
+            
+        ]
+    
+        labels ={
+        'docente':'Docente',
+        'materia':'Materia',
+        'grado': 'Grado',
+        'Dia1':'Lunes ',
+        'Dia2':'Martes ',
+        'Dia3':'Miercoles ',
+        'Dia4':'Jueves ',
+        'Dia5':'Viernes ',
+        
+
+        
+        }
+    
+        widgets = {
+        'docente': forms.Select(attrs={'class':'form-control'}),
+        'materia': forms.Select(attrs={'class':'form-control'}),
+        'grado'  : forms.TextInput(attrs={'class':'form-control'}),
+        'Dia1': forms.TimeInput(attrs={'class':'form-control'}),
+        'Dia2': forms.TimeInput(attrs={'class':'form-control'}),
+        'Dia3': forms.TimeInput(attrs={'class':'form-control'}),
+        'Dia4': forms.TimeInput(attrs={'class':'form-control'}),
+        'Dia5': forms.TimeInput(attrs={'class':'form-control'}),
+        
+        
+    
+            }
