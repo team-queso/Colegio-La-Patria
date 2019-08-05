@@ -7,9 +7,9 @@
 
             {% csrf_token %}
             {{ form.as_p }}
-            <h3> ¿Desea Eliminar al alumno? </h3>
+            <h3> ¿Desea Eliminar al Docente? {{DocenteSecundaria.nombreDocente}} </h3>
             <button class="btn btn-danger" type="submit">Sí, eliminar</button>
-            <a class="btn btn-default " href="{% url 'alumno:listar_alumnos_secundaria' %}">Cancelar</a>
+            <a class="btn btn-default " href="{% url 'alumno:listar_docente' %}">Cancelar</a>
         
             
           </form>

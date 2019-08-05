@@ -71,6 +71,23 @@ class Docente (models.Model):
     def __str__(self):
         return self.nombreDocente
 
+class DocenteSecundaria (models.Model):
+    
+    nombreDocente = models.CharField(max_length=100)
+    apellido_paterno_docente = models.CharField(max_length = 20, null = True, blank=True)
+    apellido_materno_docente = models.CharField(max_length = 20, null=True , blank = True)
+    correo = models.CharField(max_length=45)
+    telefono = models.IntegerField()
+    domicilio = models.CharField(max_length=50)
+    registro = models.CharField(max_length=15)
+    
+    class Meta:
+        verbose_name="DocenteSecundaria"
+        verbose_name_plural="DocentesSecundaria"
+
+    def __str__(self):
+        return self.nombreDocente
+
 class Calificaciones (models.Model):
     
     alumno = models.ForeignKey(Alumno, on_delete = models.CASCADE )
@@ -88,6 +105,8 @@ class Calificaciones (models.Model):
 
     def unicode(self):
         return self.alumno
+
+
 
 class CalificacionesSecundaria (models.Model):
     
@@ -109,8 +128,8 @@ class CalificacionesSecundaria (models.Model):
 
 class Horario (models.Model):
     
-    docente = models.ForeignKey(Docente, on_delete = models.CASCADE )
-    materia = models.ForeignKey(Materia, on_delete = models.CASCADE)
+    docente = models.ForeignKey(DocenteSecundaria, on_delete = models.CASCADE )
+    materia = models.ForeignKey(MateriaSecundaria, on_delete = models.CASCADE)
     grado = models.IntegerField(default=1)
     Dia1 = models.TimeField()
     Dia2 = models.TimeField()

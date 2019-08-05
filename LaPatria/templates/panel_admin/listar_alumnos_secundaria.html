@@ -36,7 +36,7 @@
             <td>{{AlumnoSecundaria.apellido_materno}}</td>
             <td>{{AlumnoSecundaria.grado}}</td>
             <td>{{AlumnoSecundaria.no_control}}</td>
-            <td><a class="btn btn-primary" href="{% url 'alumno:editar_alumno_secundaria' AlumnoSecundaria.no_control %} ">  Editar </a> <a class="btn btn-primary" href="{% url 'alumno:eliminar_alumno_secundaria' AlumnoSecundaria.no_control %} ">Eliminar </a><a class="btn btn-primary" href="{% url 'alumno:listar' AlumnoSecundaria.no_control %} ">Calificaciones </a></td>
+            <td><a class="btn btn-primary" href="{% url 'alumno:editar_alumno_secundaria' AlumnoSecundaria.no_control %} ">  Editar </a> <a class="btn btn-primary" href="{% url 'alumno:eliminar_alumno_secundaria' AlumnoSecundaria.no_control %} ">Eliminar </a><a class="btn btn-primary" href="{% url 'alumno:listar_calificaciones_secundaria' AlumnoSecundaria.no_control %} ">Calificaciones </a></td>
         </tr>
         {% endfor %}
 

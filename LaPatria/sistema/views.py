@@ -4,8 +4,8 @@ from django.db.models import Q
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView, View
-from sistema.forms import ingresarAlumno,ingresarDocente,ingresarMateria,ingresarCalificacion,ingresarAlumnoSecundaria,ingresarMateriaSecundaria,ingresarHorario
-from sistema.models import Calificaciones,Alumno,Materia,Docente,AlumnoSecundaria,CalificacionesSecundaria,MateriaSecundaria,Horario
+from sistema.forms import ingresarAlumno,ingresarDocente,ingresarMateria,ingresarCalificacion,ingresarAlumnoSecundaria,ingresarMateriaSecundaria,ingresarHorario,ingresarCalificacionSecundaria,ingresarDocenteSecundaria
+from sistema.models import Calificaciones,Alumno,Materia,Docente,AlumnoSecundaria,CalificacionesSecundaria,MateriaSecundaria,Horario,DocenteSecundaria
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -22,8 +22,8 @@ def profesores(request):
 class MateriaCreate(LoginRequiredMixin, CreateView):
 	model = Materia
 	form_class = ingresarMateria
-	template_name = 'panel_admin/ingresar_materia.html'
-	success_url = reverse_lazy("alumno:listar_alumnos")
+	template_name = 'panel_admin/ingresar_materia_secundaria.html'
+	success_url = reverse_lazy("alumno:listar_alumnos_secundaria")
 
 class MateriaSecundariaCreate(LoginRequiredMixin, CreateView):
 	model = MateriaSecundaria
@@ -136,22 +136,22 @@ class CalificacionCreate(LoginRequiredMixin,CreateView):
 	model = Calificaciones
 	form_class = ingresarCalificacion
 	template_name = 'panel_admin/calificaciones.html'
-	success_url = reverse_lazy("alumno:listar_alumnos")
+	success_url = reverse_lazy("alumno:listar_alumnos_secundaria")
 
 class CalificacionUpdate(LoginRequiredMixin,UpdateView):
 	model = Calificaciones
 	form_class = ingresarCalificacion
 	template_name = 'panel_admin/editar_calificacion.html'
-	success_url = reverse_lazy("alumno:listar_alumnos")
+	success_url = reverse_lazy("alumno:listar_alumnos_secundaria")
 
 class CalificacionDelete(LoginRequiredMixin,DeleteView):
 	model = Calificaciones
 	template_name = 'panel_admin/eliminar_calificacion.html'
-	success_url = reverse_lazy("alumno:listar_alumnos")
+	success_url = reverse_lazy("alumno:listar_alumnos_secundaria")
 
 class CalificacionList(LoginRequiredMixin,ListView):
 	Model = Calificaciones
-	template_name = "panel_admin/listar.html"
+	template_name = "panel_admin/listar_calificacion_secundaria.html"
 	def get_queryset(self):
 			q = Calificaciones.objects.filter(
 				Q(alumno__no_control = self.kwargs['pk'])
@@ -176,6 +176,78 @@ class HorarioCreate(CreateView):
 
 class CalificacionDocenteCreate(LoginRequiredMixin,CreateView):
 	model = Calificaciones
-	form_class = ingresarCalificacion
+	form_class = ingresarCalificacionSecundaria
 	template_name = 'primaria/calificaciones.html'
 	success_url = reverse_lazy("alumno:asignar_calificacion_docente")
+
+class CalificacionSecundariaCreate(LoginRequiredMixin,CreateView):
+	model = CalificacionesSecundaria
+	form_class = ingresarCalificacionSecundaria
+	template_name = 'panel_admin/ingresar_calificacion_secundaria.html'
+	success_url = reverse_lazy("alumno:listar_alumnos_secundaria")
+
+class CalificacionSecundariaUpdate(LoginRequiredMixin,UpdateView):
+	model = CalificacionesSecundaria
+	form_class = ingresarCalificacionSecundaria
+	template_name = 'panel_admin/editar_calificacion.html'
+	success_url = reverse_lazy("alumno:listar_alumnos_secundaria")
+
+class CalificacionSecundariaDelete(LoginRequiredMixin,DeleteView):
+	model = CalificacionesSecundaria
+	template_name = 'panel_admin/eliminar_calificacion_secundaria.html'
+	success_url = reverse_lazy("alumno:listar_alumnos_secundaria")
+
+class CalificacionSecundariaList(LoginRequiredMixin,ListView):
+	Model = CalificacionesSecundaria
+	template_name = "panel_admin/listar_calificacion_secundaria.html"
+	def get_queryset(self):
+			q = CalificacionesSecundaria.objects.filter(
+				Q(alumno__no_control = self.kwargs['pk'])
+				).order_by('grado')
+			return q 
+
+class DocenteSecundariaList(LoginRequiredMixin,ListView):			
+	queryset = DocenteSecundaria.objects.all()
+	template_name = 'panel_admin/listar_docente_secundaria.html'
+	
+	def get_queryset(self):
+		queryset = self.request.GET.get("buscar")
+		if queryset:
+			q = DocenteSecundaria.objects.filter(
+				Q(pk = queryset)
+				).order_by('grado')
+			return q 
+		else:
+			q = DocenteSecundaria.objects.all()
+			return q 	
+class DocenteSecundariaCreate(LoginRequiredMixin,CreateView):
+	model = DocenteSecundaria
+	form_class = ingresarDocenteSecundaria
+	template_name = 'panel_admin/ingresar_docente_secundaria.html'
+	success_url = reverse_lazy("alumno:listar_docente_secundaria")
+
+class DocenteSecundariaUpdate(LoginRequiredMixin,UpdateView):
+	model = DocenteSecundaria
+	form_class = ingresarDocenteSecundaria
+	template_name = 'panel_admin/editar_docente_secundaria.html'
+	success_url = reverse_lazy("alumno:listar_docente_secundaria")
+
+class DocenteSecundariaDelete(LoginRequiredMixin,DeleteView):
+	model = DocenteSecundaria
+	template_name = 'panel_admin/eliminar_docente_secundaria.html'
+	success_url = reverse_lazy("alumno:listar_docente_secundaria")
+
+class HorarioList(LoginRequiredMixin,ListView):			
+	queryset = Horario.objects.all()
+	template_name = 'panel_admin/listar_horarios.html'
+	
+	def get_queryset(self):
+		queryset = self.request.GET.get("buscar")
+		if queryset:
+			q = Horario.objects.filter(
+				Q(grado = queryset)
+				).order_by('docente')
+			return q 
+		else:
+			q = Horario.objects.all()
+			return q 	

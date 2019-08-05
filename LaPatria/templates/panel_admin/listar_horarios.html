@@ -1,0 +1,60 @@
+{% extends 'baseadmin.html' %}
+
+{% block content %}
+<div class="container">
+        <div class="row">
+            <div class="col-md-12 search">
+                <form method="GET">
+                    <div id ="custom-search-input">
+                        <div class ="input-group col-md-12">
+                            <input type="text" class="form-control" placeholder="Buscar..." name="buscar">
+                            <button type="submit" class="boton btn-success"> Filtrar por grupo</button>
+                        </div>
+                    </div>
+                </form>
+                    </div>
+        </div>
+    </div>
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <td>Docente</td>
+            <td>Materia</td>
+            <td>Grado</td>
+            <td>Lunes</td>
+            <td>Martes</td>
+            <td>Miercoles</td>
+            <td>Jueves</td>
+            <td>Viernes</td>
+        </tr>
+
+    </thead>
+    <tbody>
+    {% if object_list %}
+        {% for Horario in object_list %}
+        <tr>
+            <td>{{ Horario.docente }}</td>
+            <td>{{ Horario.materia }}</td>
+            <td>{{ Horario.grado }}</td>
+            <td>{{ Horario.Dia1}}</td>
+            <td>{{ Horario.Dia2 }}</td>
+            <td>{{ Horario.Dia3 }}</td>
+            <td>{{ Horario.Dia4 }}</td>
+            <td>{{ Horario.Dia5 }}</td>
+            
+        </tr>
+        {% endfor %}
+    {% else %}
+
+        <h1>No se encontraron registros</h1>
+
+    {% endif %}
+
+    </tbody>
+
+
+</table>
+
+
+{%endblock%}
